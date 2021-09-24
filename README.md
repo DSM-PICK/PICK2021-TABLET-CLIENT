@@ -1,1 +1,1 @@
-pick2021-tablet-client
+pick2021-desktop-client
