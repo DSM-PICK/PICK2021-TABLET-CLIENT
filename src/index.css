@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  outline: none;
+  text-decoration: none;
+  color: black;
+  font-family: NanumSquare;
+}
+
+@font-face {
+  font-family: NanumSquare;
+  src: url("./utils/assets/font/NanumSquare_acB.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: NanumSquare;
+  src: url("./utils/assets/font/NanumSquare_acEB.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: NanumSquare;
+  src: url("./utils/assets/font/NanumSquare_acL.ttf") format("truetype");
+}
+@font-face {
+  font-family: NanumSquare;
+  src: url("./utils/assets/font/NanumSquare_acR.ttf") format("truetype");
+}
+@font-face {
+  font-family: NanumSquare;
+  src: url("./utils/assets/font/NanumSquareB.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: NanumSquare;
+  src: url("./utils/assets/font/NanumSquareEB.ttf") format("truetype");
+}
+@font-face {
+  font-family: NanumSquare;
+  src: url("./utils/assets/font/NanumSquareL.ttf") format("truetype");
+}
+@font-face {
+  font-family: NanumSquare;
+  src: url("./utils/assets/font/NanumSquareR.ttf") format("truetype");
+}
