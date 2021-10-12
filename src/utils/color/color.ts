@@ -1,2 +1,2 @@
 export const MainColor = "#FF6E04";
-export const HeadFootColor = "#e5e5e566";
+export const HeadFootColor = "rgb(250, 250, 250)";
