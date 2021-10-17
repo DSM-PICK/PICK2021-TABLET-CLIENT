@@ -31,7 +31,6 @@ export const ChangeBox = styled.div`
 export const Enrollment = styled.div`
   width: 55%;
   height: 70%;
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -47,13 +46,80 @@ export const Enrollment = styled.div`
         padding: 9px 15px;
       }
     }
+
+    .react-datepicker-wrapper {
+      width: auto;
+    }
+
+    .example-custom-input {
+      background: white;
+      border: none;
+    }
+
+    .text-input {
+      border-bottom: 1px solid black;
+      outline: none;
+      border: none;
+      text-align: center;
+      font-size: 18px;
+    }
   }
+`;
+
+export const SaveButton = styled.button`
+  outline: none;
+  border: none;
+  background-color: ${MainColor};
+  padding: 0 15px;
+  font-size: 17px;
+  color: white;
+  border-radius: 3px;
+  margin: 2px 0;
 `;
 
 export const EnrollmentHistory = styled.div`
   width: 35%;
   height: 70%;
-  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .history-list-wrapper {
+    overflow: auto;
+    margin-bottom: 7px;
+  }
+
+  .history-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 3px 0;
+
+    .std-info {
+      width: 50%;
+
+      span:nth-child(1) {
+        margin-right: 10px;
+      }
+    }
+
+    img {
+      width: 15px;
+    }
+  }
+
+  & button {
+    padding: 6px 0;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    width: 100%;
+    background: ${MainColor};
+    font-size: 18px;
+    color: white;
+  }
 `;
 
 export const SubTitle = styled.span`
@@ -61,3 +127,5 @@ export const SubTitle = styled.span`
   font-weight: 600;
   padding: 9px 0;
 `;
+
+export const HistoryItem = styled.div``;
