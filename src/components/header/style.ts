@@ -25,4 +25,7 @@ export const HeaderWrapper = styled.div`
 export const FooterWrapper = styled(HeaderWrapper)`
   position: absolute;
   bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 `;
