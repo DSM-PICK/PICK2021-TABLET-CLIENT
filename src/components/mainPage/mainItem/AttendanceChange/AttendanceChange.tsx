@@ -1,8 +1,8 @@
 import React, { forwardRef, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { Calendar } from "../../../../utils/assets";
 import { FieldButtonType } from "../../../../utils/interface/Attendance/FieldButton";
+import EnrollmentHistory from "./EnrollmentHistory";
 import * as S from "./style";
 
 const FieldButton: FieldButtonType[] = [
@@ -29,8 +29,6 @@ const FieldButton: FieldButtonType[] = [
 ];
 
 const AttendanceChange = () => {
-  const [fieldSelect, setFieldSelect] = useState<number>(1);
-
   const [startDate, setStartDate] = useState<any>(new Date());
 
   const ExampleCustomInput = forwardRef(({ value, onClick }: any, ref: any) => (
@@ -66,18 +64,24 @@ const AttendanceChange = () => {
           </div>
           <div className="enrollment-item">
             <S.SubTitle>이름</S.SubTitle>
-            <div className="field-item">
-              {FieldButton.map((item) => (
-                <span>{item.field}</span>
-              ))}
-            </div>
+            <input
+              type="text"
+              className="text-input"
+              placeholder="이름을 입력해주세요"
+            />
+            <S.SaveButton>등록</S.SaveButton>
           </div>
           <div className="enrollment-item">
             <S.SubTitle>사유</S.SubTitle>
-            <input type="text" placeholder="사유를 입력해주세요" />
+            <input
+              type="text"
+              className="text-input"
+              placeholder="사유를 입력해주세요"
+            />
+            <S.SaveButton>저장</S.SaveButton>
           </div>
         </S.Enrollment>
-        <S.EnrollmentHistory></S.EnrollmentHistory>
+        <EnrollmentHistory />
       </S.ChangeBox>
     </S.AttendanceChangeWrapper>
   );
