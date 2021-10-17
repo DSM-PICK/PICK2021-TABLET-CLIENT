@@ -1,5 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
-import { AttendanceChange, AttendanceSelect, Footer, Header, Title } from "..";
+import React from "react";
+import {
+  AttendanceChange,
+  AttendanceChangeList,
+  AttendanceSelect,
+  Footer,
+  Header,
+  Title,
+} from "..";
 import * as S from "./style";
 
 const MainPage = () => {
@@ -10,7 +17,7 @@ const MainPage = () => {
         <Title />
         <AttendanceSelect />
         <AttendanceChange />
-        <AttendanceChange />
+        <AttendanceChangeList />
       </S.Container>
       <Footer />
     </S.MainWrapper>
