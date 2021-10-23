@@ -2,6 +2,7 @@ import React, { forwardRef, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FieldButtonType } from "../../../../utils/interface/Attendance/FieldButton";
+import Title from "../items/Title";
 import EnrollmentHistory from "./EnrollmentHistory";
 import * as S from "./style";
 
@@ -43,7 +44,7 @@ const AttendanceChange = () => {
 
   return (
     <S.AttendanceChangeWrapper>
-      <h1>출결 변동 사항 등록</h1>
+      <Title title="학생출결변경사항등록" />
       <S.ChangeBox>
         <S.Enrollment>
           <div className="enrollment-item">

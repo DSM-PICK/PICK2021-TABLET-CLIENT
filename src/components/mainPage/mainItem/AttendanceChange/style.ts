@@ -5,13 +5,6 @@ export const AttendanceChangeWrapper = styled.div`
   margin: 40px 0;
   width: 100%;
   height: 33%;
-
-  h1 {
-    font-size: 24px;
-    padding-bottom: 3px;
-    border-bottom: 3px solid ${MainColor};
-    width: fit-content;
-  }
 `;
 
 export const ChangeBox = styled.div`
