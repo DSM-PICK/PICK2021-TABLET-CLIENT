@@ -8,7 +8,7 @@ export const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  
   a > img {
     width: 200px;
   }
