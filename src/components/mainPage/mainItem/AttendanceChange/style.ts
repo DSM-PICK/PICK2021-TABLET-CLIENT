@@ -35,9 +35,6 @@ export const Enrollment = styled.div`
 
     .field-item {
       display: flex;
-      span {
-        padding: 9px 15px;
-      }
     }
 
     .react-datepicker-wrapper {
@@ -57,6 +54,12 @@ export const Enrollment = styled.div`
       font-size: 18px;
     }
   }
+`;
+
+export const FieldButton = styled.span`
+  padding: 9px 15px;
+  border-radius: 3px;
+  font-size: 17px;
 `;
 
 export const SaveButton = styled.button`
