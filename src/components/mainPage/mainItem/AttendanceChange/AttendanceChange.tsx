@@ -1,35 +1,17 @@
 import React, { forwardRef, useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { FieldButtonType } from "../../../../utils/interface/Attendance/FieldButton";
-import Title from "../items/Title";
-import EnrollmentHistory from "./EnrollmentHistory";
+import { EnrollmentHistory, FieldButton } from "../../../index";
+import {
+  FieldButtonList,
+  FieldButtonType,
+} from "../../../../utils/interface/Attendance/FieldButtonType";
+import Title from "../items/SubTitle";
 import * as S from "./style";
 
-const FieldButton: FieldButtonType[] = [
-  {
-    id: 1,
-    field: "외출",
-  },
-  {
-    id: 2,
-    field: "현체",
-  },
-  {
-    id: 3,
-    field: "귀가",
-  },
-  {
-    id: 4,
-    field: "이동",
-  },
-  {
-    id: 5,
-    field: "취업",
-  },
-];
-
 const AttendanceChange = () => {
+  const [selected, setSelected] = useState<number>(1);
+
   const [startDate, setStartDate] = useState<any>(new Date());
 
   const ExampleCustomInput = forwardRef(({ value, onClick }: any, ref: any) => (
@@ -37,6 +19,10 @@ const AttendanceChange = () => {
       {value}
     </button>
   ));
+
+  const selectedHandlerColor = (item: FieldButtonType) => {
+    setSelected(item.id);
+  };
 
   useEffect(() => {
     console.log(startDate);
@@ -50,8 +36,13 @@ const AttendanceChange = () => {
           <div className="enrollment-item">
             <S.SubTitle>종류</S.SubTitle>
             <div className="field-item">
-              {FieldButton.map((item) => (
-                <span>{item.field}</span>
+              {FieldButtonList.map((item) => (
+                <FieldButton
+                  key={item.id}
+                  item={item}
+                  selected={selected}
+                  selectedHandlerColor={selectedHandlerColor}
+                />
               ))}
             </div>
           </div>
@@ -82,6 +73,7 @@ const AttendanceChange = () => {
             <S.SaveButton>저장</S.SaveButton>
           </div>
         </S.Enrollment>
+        {/*  출결 등록 리스트 */}
         <EnrollmentHistory />
       </S.ChangeBox>
     </S.AttendanceChangeWrapper>
