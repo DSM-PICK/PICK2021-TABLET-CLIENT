@@ -8,6 +8,22 @@
   font-family: NanumSquare;
 }
 
+p,
+a,
+li,
+span,
+strong,
+button,
+::placeholder,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  transform: skew(-0.1deg);
+}
+
 @font-face {
   font-family: NanumSquare;
   src: url("./utils/assets/font/NanumSquare_acB.ttf") format("truetype");
