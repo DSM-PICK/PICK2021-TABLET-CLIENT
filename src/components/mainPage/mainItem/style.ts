@@ -17,9 +17,10 @@ export const Title = styled.div`
     display: flex;
     flex-direction: row;
 
-    span:nth-child(1) {
+    span:nth-of-type(1) {
       font-weight: 800;
       color: ${MainColor};
+      margin-right: 10px;
     }
   }
 `;

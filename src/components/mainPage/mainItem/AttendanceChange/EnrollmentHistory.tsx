@@ -1,6 +1,6 @@
 import React from "react";
 import { Close } from "../../../../utils/assets";
-import { EnrollmentHistoryType } from "../../../../utils/interface/Attendance/Enrollment";
+import { EnrollmentHistoryType } from "../../../../utils/interface/Attendance/EnrollmentType";
 import * as S from "./style";
 
 const test: EnrollmentHistoryType[] = [
