@@ -8,3 +8,5 @@ export { default as EnrollmentHistory } from "./mainPage/mainItem/AttendanceChan
 export { default as AttendanceChangeList } from "./mainPage/mainItem/AttendanceChangeList/AttendanceChangeList";
 export { default as FieldButton } from "./mainPage/mainItem/AttendanceChange/FieldButton";
 export { default as SubTitle } from "./mainPage/mainItem/items/SubTitle";
+export { default as Attendance } from "./attendance/Attendance";
+export { default as AttendanceClassBar } from "./attendance/attendanceBar/AttendanceClassBar";
