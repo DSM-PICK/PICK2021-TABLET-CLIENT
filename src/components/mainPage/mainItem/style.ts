@@ -25,7 +25,7 @@ export const Title = styled.div`
   }
 `;
 
-export const AttendanceSelectWrapper = styled.div`
+export const AttendanceSelectWrapper = styled.a`
   position: relative;
   display: flex;
   align-items: center;
