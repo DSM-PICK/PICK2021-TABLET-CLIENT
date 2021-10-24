@@ -12,5 +12,7 @@ export const SelectItem = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 17px;
+  font-weight: 700;
+  transform: skew(-0.1deg);
 `;
