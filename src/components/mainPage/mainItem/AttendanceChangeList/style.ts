@@ -61,7 +61,7 @@ export const ListContent = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow: auto;
   height: 82%;
 `;
 
@@ -88,6 +88,44 @@ export const ModalWrapper = styled.div<Props>`
     height: 250px;
     background-color: white;
     border-radius: 5px;
-    box-shadow: 0px 7px 11px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 7px 11px rgb(72 72 72 / 25%);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    #logo {
+      margin-top: 20px;
+    }
+    .close-icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+      margin: 10px;
+    }
+
+    span {
+      font-size: 20px;
+      margin: 40px 0;
+    }
+
+    .button-wrapper {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: row;
+
+      button {
+        margin: 20px;
+        filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.14));
+        background: #267dff;
+        border-radius: 5px;
+        padding: 5px 20px;
+        font-size: 18px;
+        color: white;
+        outline: none;
+        border: none;
+      }
+    }
   }
 `;

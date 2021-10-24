@@ -15,6 +15,7 @@ const FloorClassItem = ({ item, selectedHandlerColor, selected }: Props) => {
       onClick={() => selectedHandlerColor(item)}
       style={{
         color: item.id === selected ? `${MainColor}` : "",
+        fontWeight: item.id === selected ? 700 : "normal",
       }}
     >
       {item.field}
