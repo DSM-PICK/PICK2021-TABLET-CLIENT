@@ -24,6 +24,9 @@ h6 {
   transform: skew(-0.1deg);
 }
 
+/* font-family: 'Noto Sans KR', sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
 @font-face {
   font-family: NanumSquare;
   src: url("./utils/assets/font/NanumSquare_acB.ttf") format("truetype");
