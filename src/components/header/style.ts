@@ -12,6 +12,7 @@ export const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.07);
 
   a > img {
     width: 200px;
