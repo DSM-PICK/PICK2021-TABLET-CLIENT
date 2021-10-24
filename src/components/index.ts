@@ -10,3 +10,4 @@ export { default as FieldButton } from "./mainPage/mainItem/AttendanceChange/Fie
 export { default as SubTitle } from "./mainPage/mainItem/items/SubTitle";
 export { default as Attendance } from "./attendance/Attendance";
 export { default as AttendanceClassBar } from "./attendance/attendanceBar/AttendanceClassBar";
+export { default as ContentHeader } from "./attendance/contentHeader/ContentHeader";
