@@ -1,4 +1,5 @@
 export { default as Header } from "./header/Header";
+export { default as AttendanceHeader } from "./header/AttendanceHeader";
 export { default as Footer } from "./header/Footer";
 export { default as MainPage } from "./mainPage/MainPage";
 export { default as Title } from "./mainPage/mainItem/Title";
