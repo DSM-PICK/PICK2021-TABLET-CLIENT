@@ -35,6 +35,10 @@ export const StudentList = styled.section`
       width: 20%;
     }
   }
+
+  .count {
+    font-size: 18px;
+  }
 `;
 
 export const StudentItem = styled.ul<Props>`
