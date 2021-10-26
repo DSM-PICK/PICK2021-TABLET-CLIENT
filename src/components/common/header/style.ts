@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { HeadFootColor, MainColor } from "../../utils/color/color";
+import { HeadFootColor, MainColor } from "../../../utils/color/color";
 
 interface Props {
   modal: boolean;
