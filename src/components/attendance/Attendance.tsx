@@ -1,5 +1,11 @@
 import React from "react";
-import { AttendanceClassBar, ContentHeader, Footer, Header } from "..";
+import {
+  AttendanceClassBar,
+  ContentHeader,
+  ContentList,
+  Footer,
+  Header,
+} from "..";
 import * as S from "./style";
 
 const Attendance = () => {
@@ -12,6 +18,7 @@ const Attendance = () => {
         <AttendanceClassBar />
         <S.ContentWrapper>
           <ContentHeader />
+          <ContentList />
         </S.ContentWrapper>
       </S.MainWrapper>
     </>
