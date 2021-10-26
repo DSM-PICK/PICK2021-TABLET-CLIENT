@@ -16,6 +16,7 @@ export const Title = styled.div`
   .title-item {
     display: flex;
     flex-direction: row;
+    margin-top: 5px;
 
     span:nth-of-type(1) {
       font-weight: 800;
@@ -25,7 +26,7 @@ export const Title = styled.div`
   }
 `;
 
-export const AttendanceSelectWrapper = styled.div`
+export const AttendanceSelectWrapper = styled.a`
   position: relative;
   display: flex;
   align-items: center;

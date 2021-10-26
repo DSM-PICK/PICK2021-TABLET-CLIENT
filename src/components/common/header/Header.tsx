@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Logo } from "../../utils/assets";
+import { Logo } from "../../../utils/assets";
 import LogoutModal from "./LogoutModal";
 import * as S from "./style";
 

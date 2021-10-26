@@ -4,7 +4,7 @@ import * as S from "./style";
 
 const AttendanceSelect = () => {
   return (
-    <S.AttendanceSelectWrapper>
+    <S.AttendanceSelectWrapper href="/attendance">
       <img src={MainBack} alt="" />
       <span>전공 동아리</span>
     </S.AttendanceSelectWrapper>

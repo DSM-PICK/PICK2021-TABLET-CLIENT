@@ -1,5 +1,5 @@
 import React from "react";
-import { NavCalendarIcon, NavHomeIcon } from "../../utils/assets";
+import { NavCalendarIcon, NavHomeIcon } from "../../../utils/assets";
 import * as S from "./style";
 
 const Footer = () => {
