@@ -4,7 +4,7 @@ import { SubTitle } from "../../../index";
 import {
   ClassButtonList,
   FieldButtonType,
-} from "../../../../utils/interface/Attendance/FieldButtonType";
+} from "../../../../lib/interface/Attendance/FieldButtonType";
 import FloorClassItem from "./FloorClassItem";
 import ListContainer from "./ListContainer";
 
