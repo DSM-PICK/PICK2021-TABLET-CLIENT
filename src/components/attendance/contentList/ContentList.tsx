@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
+import { useRecoilValue } from "recoil";
 import { StudentItem } from "../..";
+import { selectCount } from "../../../modules/atom/attendance";
 import MoveModal from "../moveModal/MoveModal";
 import * as S from "./style";
 
 const ContentList = () => {
-  const [selectCount, setSelectCount] = useState<number>(0);
-  const [moveModal, setMoveModal] = useState<boolean>(false);
+  const count = useRecoilValue(selectCount);
 
   return (
     <>
-      <MoveModal moveModal={moveModal} setMoveModal={setMoveModal} />
+      <MoveModal />
       <S.StudentList>
         <ul className="sub-header">
           <li>선택</li>
@@ -20,13 +21,12 @@ const ContentList = () => {
           <li>10교시</li>
         </ul>
         <div className="student-list">
-          <StudentItem
-            setMoveModal={setMoveModal}
-            setSelectCount={setSelectCount}
-            selectCount={selectCount}
-          />
+          <StudentItem />
+          <StudentItem />
+          <StudentItem />
+          <StudentItem />
         </div>
-        <span className="count">{selectCount}명 선택됨</span>
+        <span className="count">{count}명 선택됨</span>
       </S.StudentList>
     </>
   );
