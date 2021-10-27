@@ -1,6 +1,6 @@
 import React from "react";
 import { MainColor } from "../../../../utils/color/color";
-import { FieldButtonType } from "../../../../utils/interface/Attendance/FieldButtonType";
+import { FieldButtonType } from "../../../../lib/interface/Attendance/FieldButtonType";
 import * as S from "./style";
 
 interface Props {
