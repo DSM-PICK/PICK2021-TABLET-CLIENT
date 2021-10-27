@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {
   ClassButtonList,
   FieldButtonType,
-} from "../../../utils/interface/Attendance/FieldButtonType";
+} from "../../../lib/interface/Attendance/FieldButtonType";
 import SelectItem from "./SelectItem";
 import * as S from "./style";
 

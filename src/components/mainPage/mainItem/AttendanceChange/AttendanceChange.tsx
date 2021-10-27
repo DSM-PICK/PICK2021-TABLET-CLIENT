@@ -5,7 +5,7 @@ import { EnrollmentHistory, FieldButton } from "../../../index";
 import {
   FieldButtonList,
   FieldButtonType,
-} from "../../../../utils/interface/Attendance/FieldButtonType";
+} from "../../../../lib/interface/Attendance/FieldButtonType";
 import Title from "../items/SubTitle";
 import * as S from "./style";
 

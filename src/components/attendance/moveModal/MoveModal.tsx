@@ -1,14 +1,12 @@
 import React, { useState } from "react";
+import { useRecoilState } from "recoil";
+import { moveModal } from "../../../modules/atom/attendance/index";
 import { Close } from "../../../utils/assets";
 import * as S from "./style";
 
-interface Props {
-  moveModal: boolean;
-  setMoveModal: any;
-}
-
-const MoveModal = ({ moveModal, setMoveModal }: Props) => {
+const MoveModal = () => {
   const [selected, setSelected] = useState<number>(0);
+  const [modal, setModal] = useRecoilState<boolean>(moveModal);
 
   const place = [
     {
@@ -38,14 +36,10 @@ const MoveModal = ({ moveModal, setMoveModal }: Props) => {
   ];
 
   return (
-    <S.ModalWrapper moveModal={moveModal}>
+    <S.ModalWrapper modal={modal}>
       <S.ModalBox>
         <h1>이동 교실 선택</h1>
-        <img
-          src={Close}
-          alt="닫기 아이콘"
-          onClick={() => setMoveModal(false)}
-        />
+        <img src={Close} alt="닫기 아이콘" onClick={() => setModal(false)} />
         <S.PlaceWrapper>
           <S.Placebar>
             <span>2201 강은빈</span>

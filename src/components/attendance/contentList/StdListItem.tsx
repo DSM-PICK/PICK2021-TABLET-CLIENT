@@ -1,14 +1,11 @@
 import React, { useState } from "react";
+import { useRecoilState } from "recoil";
+import { selectCount } from "../../../modules/atom/attendance";
 import StateContainer from "./StateContainer";
 import * as S from "./style";
 
-interface Props {
-  setSelectCount: any;
-  selectCount: number;
-  setMoveModal: any;
-}
-
-const StdListItem = ({ setSelectCount, selectCount, setMoveModal }: Props) => {
+const StdListItem = () => {
+  const [count, setCount] = useRecoilState<number>(selectCount);
   const [check, setCheck] = useState<boolean>(false); //input check
 
   const std = ["8교시", "9교시", "10교시"];
@@ -20,16 +17,14 @@ const StdListItem = ({ setSelectCount, selectCount, setMoveModal }: Props) => {
           <div
             onClick={() => {
               setCheck(!check);
-              check
-                ? setSelectCount(selectCount - 1)
-                : setSelectCount(selectCount + 1);
+              check ? setCount(count - 1) : setCount(count + 1);
             }}
           />
         </div>
         <span>2201</span>
         <span>강은빈</span>
         {std.map((_, index) => (
-          <StateContainer key={index} setMoveModal={setMoveModal} />
+          <StateContainer key={index} />
         ))}
       </S.StudentItem>
     </>

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 interface Props {
-  moveModal: boolean;
+  modal: boolean;
 }
 
 export const ModalWrapper = styled.div<Props>`
@@ -12,7 +12,7 @@ export const ModalWrapper = styled.div<Props>`
   height: 100vh;
   background: rgba(0, 0, 0, 0.33);
   z-index: 3;
-  display: ${({ moveModal }) => moveModal ? "flex" : "none"};
+  display: ${({ modal }) => (modal ? "flex" : "none")};
   justify-content: center;
   align-items: center;
 `;
