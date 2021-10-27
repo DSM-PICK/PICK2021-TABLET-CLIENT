@@ -28,13 +28,13 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const FooterWrapper = styled(HeaderWrapper)`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 
-  img {
+  a > img {
     width: 50px;
   }
 `;
