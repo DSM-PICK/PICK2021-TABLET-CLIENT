@@ -9,6 +9,7 @@ const StateContainer = () => {
   const [state, setState] = useState<string>("");
   const setModal = useSetRecoilState<boolean>(moveModal);
 
+
   const list = ["출석", "이동", "외출", "무단", "현체", "귀가"];
 
   useEffect(() => {
