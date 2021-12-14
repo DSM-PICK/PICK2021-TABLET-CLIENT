@@ -7,9 +7,9 @@ export const CalendarWrap = styled.div`
 
 export const Container = styled.div`
   width: 100%;
-  border: 1px solid red;
+  height: calc(100% - 160px);
   margin: 0 auto;
   overflow: auto;
-  padding: 8% 5%;
+  padding: 6% 2%;
   box-sizing: border-box;
 `;
