@@ -55,5 +55,9 @@ export const ModalWrapper = styled.div<Props>`
     width: 400px;
     height: 250px;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    box-sizing: border-box;
   }
 `;

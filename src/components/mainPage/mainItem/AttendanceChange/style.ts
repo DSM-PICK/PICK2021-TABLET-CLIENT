@@ -96,7 +96,7 @@ export const EnrollmentHistory = styled.div`
     .std-info {
       width: 50%;
 
-      span:nth-child(1) {
+      span:nth-of-type(1) {
         margin-right: 10px;
       }
     }
