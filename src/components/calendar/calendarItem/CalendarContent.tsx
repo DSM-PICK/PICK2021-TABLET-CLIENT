@@ -50,12 +50,12 @@ const CalendarContent = () => {
                 >
                   <div className="date_more">
                     <span>{current.format("D")}</span>
-                    <span>방과후</span>
+                    {/* <span>방과후</span> */}
                   </div>
                   <div className="teacher_list">
-                    <span>강은빈</span>
-                    <span>강은빈</span>
-                    <span>강은빈</span>
+                    <span>1층 강은빈</span>
+                    <span>1층 강은빈</span>
+                    <span>1층 강은빈</span>
                   </div>
                 </div>
               );

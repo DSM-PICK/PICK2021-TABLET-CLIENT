@@ -81,6 +81,9 @@ export const ContentWrap = styled.div`
       width: calc(100% / 7);
       padding: 0.5rem;
       box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
       .date_more {
         width: 100%;
