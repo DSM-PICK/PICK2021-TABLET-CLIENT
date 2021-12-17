@@ -17,3 +17,4 @@ export { default as StudentItem } from "./attendance/contentList/StdListItem";
 export { default as Calendar } from "./calendar/Calendar";
 export { default as CalendarHead } from "./calendar/calendarItem/CalendarHead";
 export { default as CalendarContent } from "./calendar/calendarItem/CalendarContent";
+export { default as CalendarChangeBtn } from "./calendar/calendarItem/CalendarChangeBtn";
