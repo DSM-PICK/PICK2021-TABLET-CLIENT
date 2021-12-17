@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { MainColor } from "../../../utils/color/color";
 
-export const TitleWrap = styled.div`
+export const TitleWrap = styled.section`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -30,8 +30,8 @@ export const TitleWrap = styled.div`
   }
 `;
 
-export const CalendarWrap = styled.div`
-  margin-top: 40px;
+export const CalendarWrap = styled.section`
+  margin-top: 20px;
   width: 100%;
   height: 88%;
 `;
@@ -84,6 +84,7 @@ export const ContentWrap = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: space-evenly;
 
       .date_more {
         width: 100%;
@@ -95,7 +96,23 @@ export const ContentWrap = styled.div`
       .teacher_list {
         display: flex;
         flex-direction: column;
+
+        span {
+          padding: 0.1rem 0;
+          box-sizing: border-box;
+        }
       }
     }
+  }
+`;
+
+export const ChangerBtnWrap = styled.section`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+  .item_center {
+    text-align : center;
+    
   }
 `;
