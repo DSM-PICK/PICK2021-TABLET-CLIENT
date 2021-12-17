@@ -1,5 +1,11 @@
 import React from "react";
-import { CalendarContent, CalendarHead, Footer, Header } from "..";
+import {
+  CalendarChangeBtn,
+  CalendarContent,
+  CalendarHead,
+  Footer,
+  Header,
+} from "..";
 import * as S from "./style";
 
 const Calendar = () => {
@@ -9,6 +15,7 @@ const Calendar = () => {
       <S.Container>
         <CalendarHead />
         <CalendarContent />
+        <CalendarChangeBtn />
       </S.Container>
       <Footer />
     </S.CalendarWrap>
