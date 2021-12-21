@@ -2,10 +2,15 @@
 import request from "../axios";
 
 export default {
-  getLocationList() {
+  getScheduleName() {
     return request({
-      url: "/location/list",
+      url: "/schedule/name",
       method: "get",
+    });
+  },
+  getScheduleListMonth(month: number) {
+    return request({
+      url: `/schedule/list/${month}`,
     });
   },
 };
