@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+import { AttendanceType } from "../../../lib/interface/Attendance";
 
 export const moveModal = atom({
   key: "modal",
@@ -18,4 +19,14 @@ export const stateSelect = atom({
 export const selectCount = atom({
   key: "count",
   default: 0,
+});
+
+export const attendanceData = atom<AttendanceType>({
+  key: "attendance",
+  default: {
+    state: "",
+    reason: "",
+    name: "",
+    date: "",
+  },
 });
