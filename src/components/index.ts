@@ -18,3 +18,5 @@ export { default as Calendar } from "./calendar/Calendar";
 export { default as CalendarHead } from "./calendar/calendarItem/CalendarHead";
 export { default as CalendarContent } from "./calendar/calendarItem/CalendarContent";
 export { default as CalendarChangeBtn } from "./calendar/calendarItem/CalendarChangeBtn";
+export { default as FirstPage } from "./common/firstPage";
+export { default as Login } from "./login";
