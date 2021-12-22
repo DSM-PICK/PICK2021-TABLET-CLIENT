@@ -9,7 +9,10 @@ import {
 import Title from "../items/SubTitle";
 import * as S from "./style";
 import { useRecoilState } from "recoil";
-import { attendanceData } from "../../../../modules/atom/attendance";
+import {
+  attendanceData,
+  attendanceDataList,
+} from "../../../../modules/atom/attendance";
 import { DateSplitHook } from "../../../../lib/hook/dateSplitHook";
 
 const AttendanceChange = () => {
@@ -17,6 +20,8 @@ const AttendanceChange = () => {
   const [startDate, setStartDate] = useState<any>(new Date());
   const [dateValue, setDateValue] = useState<any>("");
   const [attendance, setAttendance] = useRecoilState(attendanceData);
+  const [attendanceList, setAttendanceList] =
+    useRecoilState(attendanceDataList);
 
   const ExampleCustomInput = forwardRef(({ value, onClick }: any, ref: any) => (
     <button className="example-custom-input" onClick={onClick} ref={ref}>
@@ -39,16 +44,32 @@ const AttendanceChange = () => {
     });
   };
 
+  const attendanceListAdd = (
+    e: React.FormEventHandler<HTMLFormElement> | any
+  ) => {
+    e.preventDefault();
+
+    setAttendanceList(attendanceList.concat(attendance));
+
+    setAttendance({
+      state: "",
+      reason: "",
+      name: "",
+      date: "",
+    });
+  };
+
   useEffect(() => {
     console.log(attendance);
     console.log(dateValue);
-  }, [dateValue, attendance]);
+    console.log(attendanceList);
+  }, [dateValue, attendance, attendanceList]);
 
   return (
     <S.AttendanceChangeWrapper>
       <Title title="학생출결변경사항등록" />
       <S.ChangeBox>
-        <S.Enrollment>
+        <S.Enrollment onSubmit={(e) => attendanceListAdd(e)}>
           <div className="enrollment-item">
             <S.SubTitle>종류</S.SubTitle>
             <div className="field-item">
