@@ -8,11 +8,15 @@ import {
 } from "../../../../lib/interface/Attendance/FieldButtonType";
 import Title from "../items/SubTitle";
 import * as S from "./style";
+import { useRecoilState } from "recoil";
+import { attendanceData } from "../../../../modules/atom/attendance";
+import { DateSplitHook } from "../../../../lib/hook/dateSplitHook";
 
 const AttendanceChange = () => {
   const [selected, setSelected] = useState<number>(1);
-
   const [startDate, setStartDate] = useState<any>(new Date());
+  const [dateValue, setDateValue] = useState<any>("");
+  const [attendance, setAttendance] = useRecoilState(attendanceData);
 
   const ExampleCustomInput = forwardRef(({ value, onClick }: any, ref: any) => (
     <button className="example-custom-input" onClick={onClick} ref={ref}>
@@ -24,9 +28,21 @@ const AttendanceChange = () => {
     setSelected(item.id);
   };
 
+  const { date, name, reason } = attendance;
+
+  const onChange = (e: any) => {
+    const { value, name } = e.target;
+
+    setAttendance({
+      ...attendance,
+      [name]: value,
+    });
+  };
+
   useEffect(() => {
-    console.log(startDate);
-  }, [startDate]);
+    console.log(attendance);
+    console.log(dateValue);
+  }, [dateValue, attendance]);
 
   return (
     <S.AttendanceChangeWrapper>
@@ -50,7 +66,10 @@ const AttendanceChange = () => {
             <S.SubTitle>날짜</S.SubTitle>
             <DatePicker
               selected={startDate}
-              onChange={(date) => setStartDate(date)}
+              onChange={(datee) => {
+                setStartDate(date);
+                setDateValue(DateSplitHook(date));
+              }}
               customInput={<ExampleCustomInput />}
             />
           </div>
@@ -58,6 +77,9 @@ const AttendanceChange = () => {
             <S.SubTitle>이름</S.SubTitle>
             <input
               type="text"
+              name="name"
+              value={name}
+              onChange={(e) => onChange(e)}
               className="text-input"
               placeholder="이름을 입력해주세요"
             />
@@ -67,6 +89,9 @@ const AttendanceChange = () => {
             <S.SubTitle>사유</S.SubTitle>
             <input
               type="text"
+              name="reason"
+              value={reason}
+              onChange={(e) => onChange(e)}
               className="text-input"
               placeholder="사유를 입력해주세요"
             />
