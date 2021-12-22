@@ -30,3 +30,8 @@ export const attendanceData = atom<AttendanceType>({
     date: "",
   },
 });
+
+export const attendanceDataList = atom<AttendanceType[]>({
+  key: "attendanceList",
+  default: [],
+});
