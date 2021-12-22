@@ -1,64 +1,34 @@
 import React from "react";
 import { Close } from "../../../../utils/assets";
-import { EnrollmentHistoryType } from "../../../../lib/interface/Attendance/EnrollmentType";
 import * as S from "./style";
-
-const test: EnrollmentHistoryType[] = [
-  {
-    s_num: 2201,
-    name: "강은빈",
-    reason: "병원",
-  },
-  {
-    s_num: 2201,
-    name: "강은빈",
-    reason: "병원",
-  },
-  {
-    s_num: 2201,
-    name: "강은빈",
-    reason: "병원",
-  },
-  {
-    s_num: 2201,
-    name: "강은빈",
-    reason: "병원",
-  },
-  {
-    s_num: 2201,
-    name: "강은빈",
-    reason: "병원",
-  },
-  {
-    s_num: 2201,
-    name: "강은빈",
-    reason: "병원",
-  },
-  {
-    s_num: 2201,
-    name: "강은빈",
-    reason: "병원",
-  },
-  {
-    s_num: 2201,
-    name: "강은빈",
-    reason: "병원",
-  },
-];
+import { useRecoilState } from "recoil";
+import { attendanceDataList } from "../../../../modules/atom/attendance";
+import { AttendanceType } from "../../../../lib/interface/Attendance";
 
 const EnrollmentHistory = () => {
+  const [attendanceList, setAttendanceList] =
+    useRecoilState(attendanceDataList);
+
+  const attendanceFilter = (name: string) => {
+    setAttendanceList(attendanceList.filter((item) => item.name !== name));
+  };
+
   return (
     <S.EnrollmentHistory>
       <div className="history-list-wrapper">
-        {test.map((item, index) => (
+        {attendanceList.map((item: AttendanceType, index) => (
           <div key={index} className="history-wrapper">
             <div className="std-info">
-              <span>{item.s_num}</span>
+              <span>{item.state}</span>
               <span>{item.name}</span>
             </div>
 
             <span>{item.reason}</span>
-            <img src={Close} alt="닫기 버튼" />
+            <img
+              src={Close}
+              alt="삭제버튼"
+              onClick={() => attendanceFilter(item.name)}
+            />
           </div>
         ))}
       </div>
