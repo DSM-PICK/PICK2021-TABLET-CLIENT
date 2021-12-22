@@ -18,12 +18,24 @@ export const HeaderWrapper = styled.div`
     width: 200px;
   }
 
-  span {
+  .item_box {
     position: absolute;
     right: 0;
     margin: 0 30px;
     font-size: 22px;
-    color: ${MainColor};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    span:nth-of-type(1) {
+      font-size: 16px;
+    }
+
+    span:nth-of-type(2) {
+      margin-top: 2px;
+      font-size: 20px;
+      font-weight: 600;
+    }
   }
 `;
 
