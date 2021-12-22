@@ -19,10 +19,6 @@ const Login = () => {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
 
-    if (name === "password") {
-      value.length >= 8 ? console.log(true) : console.log(false);
-    }
-
     setInputs({
       ...inputs,
       [name]: value,
@@ -37,6 +33,7 @@ const Login = () => {
       .then((res) => {
         localStorage.setItem("access_token", res.data.access_token);
         localStorage.setItem("refresh_token", res.data.refresh_token);
+        localStorage.setItem("teacher_id", res.data.teacher_id);
         push("/main");
       })
       .catch((e) => console.log(e));
@@ -48,7 +45,12 @@ const Login = () => {
     id.length > 0 && password.length >= 8
       ? setBtnColor(true)
       : setBtnColor(false);
-  }, [id.length, password.length]);
+
+    const reg = "/[~!@#$%;'^,&*()_+|</>=>`?:{[}]/g";
+    if (!reg.includes(password)) {
+      console.log("ddd");
+    }
+  }, [id.length, password, password.length]);
 
   return (
     <S.LoginWrapper>
