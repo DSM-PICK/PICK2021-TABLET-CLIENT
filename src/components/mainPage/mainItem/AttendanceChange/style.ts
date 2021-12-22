@@ -21,7 +21,7 @@ export const ChangeBox = styled.div`
   justify-content: space-evenly;
 `;
 
-export const Enrollment = styled.div`
+export const Enrollment = styled.form`
   width: 55%;
   height: 70%;
   display: flex;
