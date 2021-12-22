@@ -12,4 +12,14 @@ export default {
       },
     });
   },
+  getInfomationApi(id: string) {
+    return request({
+      url: `/teacher/${id}/information`,
+    });
+  },
+  getStudentName(name: string) {
+    return request({
+      url: `/teacher/student?name=${name}`,
+    });
+  },
 };
