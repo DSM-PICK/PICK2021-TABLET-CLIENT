@@ -13,4 +13,9 @@ export default {
       url: `/schedule/list/${month}`,
     });
   },
+  getScheduleDate(date: string) {
+    return request({
+      url: `/schedule/${date}`,
+    });
+  },
 };
