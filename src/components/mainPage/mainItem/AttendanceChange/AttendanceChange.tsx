@@ -51,6 +51,7 @@ const AttendanceChange = () => {
 
     setAttendanceList(attendanceList.concat(attendance));
 
+    
     setAttendance({
       state: "",
       reason: "",
