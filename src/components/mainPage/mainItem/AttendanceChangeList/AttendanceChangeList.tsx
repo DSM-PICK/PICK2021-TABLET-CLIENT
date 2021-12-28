@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./style";
 import { SubTitle } from "../../../index";
 import {
@@ -7,6 +7,7 @@ import {
 } from "../../../../lib/interface/Attendance/FieldButtonType";
 import FloorClassItem from "./FloorClassItem";
 import ListContainer from "./ListContainer";
+import location from "../../../../lib/api/location/locationApi";
 
 const AttendanceChangeList = () => {
   const [selected, setSelected] = useState<number>(1);
