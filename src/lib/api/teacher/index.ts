@@ -17,7 +17,7 @@ export default {
       url: `/teacher/${id}/information`,
     });
   },
-  getStudentName(name: string) {
+  getStudentNameApi(name: string) {
     return request({
       url: `/teacher/student?name=${name}`,
     });
