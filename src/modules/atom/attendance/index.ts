@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+import { teacherId } from "../../../lib/api/axios";
 import { AttendanceType } from "../../../lib/interface/Attendance";
 
 export const moveModal = atom({
@@ -24,10 +25,13 @@ export const selectCount = atom({
 export const attendanceData = atom<AttendanceType>({
   key: "attendance",
   default: {
-    state: "",
-    reason: "",
+    student_id: "",
     name: "",
-    date: "",
+    director_id: teacherId,
+    period: "",
+    state: "",
+    memo: "",
+    reason: "",
   },
 });
 
