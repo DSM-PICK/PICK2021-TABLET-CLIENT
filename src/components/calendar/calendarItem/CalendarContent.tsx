@@ -1,5 +1,5 @@
 import moment from "moment";
-import React, { useState } from "react";
+import React from "react";
 import { useRecoilState } from "recoil";
 import { date } from "../../../modules/atom/calendar";
 import * as S from "./style";
@@ -7,7 +7,7 @@ import "../../../index.css";
 
 const CalendarContent = () => {
   const [baseDate, setBaseDate] = useRecoilState(date);
-  const week = ["일", "월", "화", "수", "목", "금", "토"];
+  const week = ["월", "화", "수", "목", "금"];
 
   const handleDayClick = (current: moment.Moment) => setBaseDate(current);
 
@@ -25,8 +25,8 @@ const CalendarContent = () => {
     for (let week = startWeek; week <= endWeek; week++) {
       calendar.push(
         <div className="content" key={week}>
-          {Array(7)
-            .fill(0)
+          {Array(5)
+            .fill(2)
             .map((n, i) => {
               let current = today
                 .clone()
@@ -43,7 +43,7 @@ const CalendarContent = () => {
                 current.format("MM") !== today.format("MM") ? "grayed" : "";
 
               return (
-                <div
+                <S.BoxItem
                   className={`box ${isSelected} ${isGrayed}`}
                   key={i}
                   onClick={() => handleDayClick(current)}
@@ -57,7 +57,7 @@ const CalendarContent = () => {
                     <span>강은빈</span>
                     <span>강은빈</span>
                   </div>
-                </div>
+                </S.BoxItem>
               );
             })}
         </div>
