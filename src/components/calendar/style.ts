@@ -12,4 +12,7 @@ export const Container = styled.div`
   overflow: auto;
   padding: 6% 2%;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
