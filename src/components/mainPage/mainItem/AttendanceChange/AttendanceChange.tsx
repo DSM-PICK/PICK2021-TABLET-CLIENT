@@ -1,24 +1,29 @@
 import React, { forwardRef, useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { EnrollmentHistory, FieldButton } from "../../../index";
+import Title from "../items/SubTitle";
+import * as S from "./style";
 import {
   FieldButtonList,
   FieldButtonType,
 } from "../../../../lib/interface/Attendance/FieldButtonType";
-import Title from "../items/SubTitle";
-import * as S from "./style";
-import { useRecoilState } from "recoil";
 import {
   attendanceData,
   attendanceDataList,
 } from "../../../../modules/atom/attendance";
 import { DateSplitHook } from "../../../../lib/hook/dateSplitHook";
+import teacher from "../../../../lib/api/teacher";
 
 const AttendanceChange = () => {
   const [selected, setSelected] = useState<number>(1);
+  const [clendarOne, setClendarOne] = useState<boolean>(false);
   const [startDate, setStartDate] = useState<any>(new Date());
-  const [dateValue, setDateValue] = useState<any>("");
+  const [dateValue, setDateValue] = useState<any>(DateSplitHook(startDate));
+  const [dateSecValue, setDateSecValue] = useState<Date>(
+    DateSplitHook(startDate)
+  );
   const [attendance, setAttendance] = useRecoilState(attendanceData);
   const [attendanceList, setAttendanceList] =
     useRecoilState(attendanceDataList);
@@ -33,10 +38,22 @@ const AttendanceChange = () => {
     setSelected(item.id);
   };
 
-  const { date, name, reason } = attendance;
+  const { period, name, reason } = attendance;
 
   const onChange = (e: any) => {
+    e.preventDefault();
     const { value, name } = e.target;
+
+    setAttendance({
+      ...attendance,
+      [name]: value,
+    });
+  };
+
+  const onStudent = (e: any) => {
+    const { value, name } = e.target;
+
+    teacher.getStudentNameApi(value);
 
     setAttendance({
       ...attendance,
@@ -51,19 +68,19 @@ const AttendanceChange = () => {
 
     setAttendanceList(attendanceList.concat(attendance));
 
-    
     setAttendance({
-      state: "",
-      reason: "",
+      student_id: "",
       name: "",
-      date: "",
+      period: "",
+      state: "",
+      memo: "",
+      reason: "",
     });
   };
 
   useEffect(() => {
     console.log(attendance);
-    console.log(dateValue);
-    console.log(attendanceList);
+    console.log("vlaue ", dateValue);
   }, [dateValue, attendance, attendanceList]);
 
   return (
@@ -86,14 +103,28 @@ const AttendanceChange = () => {
           </div>
           <div className="enrollment-item">
             <S.SubTitle>날짜</S.SubTitle>
-            <DatePicker
-              selected={startDate}
-              onChange={(datee) => {
-                setStartDate(date);
-                setDateValue(DateSplitHook(date));
-              }}
-              customInput={<ExampleCustomInput />}
-            />
+            <S.DateWrapper clendarOne={clendarOne}>
+              <div className="date_item_wrap">
+                <span
+                  onClick={() => setClendarOne(!clendarOne)}
+                >{`${dateValue[0]}년 ${dateValue[1]}월 ${dateValue[2]}일`}</span>
+                <span>_교시</span>
+              </div>
+              <label>
+                <DatePicker
+                  selected={startDate}
+                  onChange={(period) => {
+                    setStartDate(period);
+                    setDateValue(DateSplitHook(period));
+                  }}
+                  customInput={<ExampleCustomInput />}
+                />
+              </label>
+              <div className="date_item_wrap">
+                <span>{`${dateValue[0]}년 ${dateValue[1]}월 ${dateValue[2]}일`}</span>
+                <span>_교시</span>
+              </div>
+            </S.DateWrapper>
           </div>
           <div className="enrollment-item">
             <S.SubTitle>이름</S.SubTitle>
@@ -101,7 +132,7 @@ const AttendanceChange = () => {
               type="text"
               name="name"
               value={name}
-              onChange={(e) => onChange(e)}
+              onChange={(e) => onStudent(e)}
               className="text-input"
               placeholder="이름을 입력해주세요"
             />
