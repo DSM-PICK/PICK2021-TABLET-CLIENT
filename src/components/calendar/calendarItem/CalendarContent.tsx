@@ -1,15 +1,38 @@
+/* eslint-disable no-loop-func */
 import moment from "moment";
-import React from "react";
-import { useRecoilState } from "recoil";
-import { date } from "../../../modules/atom/calendar";
+import React, { useEffect } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { date, dateValue } from "../../../modules/atom/calendar";
 import * as S from "./style";
 import "../../../index.css";
+import {
+  scheduleDateSelector,
+  scheduleListMonthSelector,
+} from "../../../modules/selector/schedule";
+import { StateChangeHook } from "../../../lib/hook/stateChangeHook";
+import { ScheduleListType } from "../../../lib/interface/schedule/schedule";
 
 const CalendarContent = () => {
   const [baseDate, setBaseDate] = useRecoilState(date);
+  const [dateContent, setDateContent] = useRecoilState(dateValue);
+  const test = baseDate.format("YYYY-MM-DD");
   const week = ["월", "화", "수", "목", "금"];
 
+  const stateValue = useRecoilValue(scheduleDateSelector(dateContent));
+  const scheduleList = useRecoilValue(
+    scheduleListMonthSelector({
+      year: baseDate.format("YYYY"),
+      month: baseDate.format("MM"),
+    })
+  );
   const handleDayClick = (current: moment.Moment) => setBaseDate(current);
+
+  useEffect(() => {
+    setDateContent(test);
+    console.log(stateValue);
+    console.log(scheduleList);
+    console.log(test);
+  }, [test]);
 
   function generate() {
     const today = baseDate;
@@ -27,12 +50,13 @@ const CalendarContent = () => {
         <div className="content" key={week}>
           {Array(5)
             .fill(2)
-            .map((n, i) => {
+            .map((_n, i) => {
               let current = today
                 .clone()
+                .startOf("year")
                 .week(week)
                 .startOf("week")
-                .add(n + i, "day");
+                .add(i + 1, "day");
 
               let isSelected =
                 today.format("YYYYMMDD") === current.format("YYYYMMDD")
@@ -42,21 +66,32 @@ const CalendarContent = () => {
               let isGrayed =
                 current.format("MM") !== today.format("MM") ? "grayed" : "";
 
+              if (today.format("YYYY-MM-DD") === test) {
+              }
+
               return (
                 <S.BoxItem
                   className={`box ${isSelected} ${isGrayed}`}
                   key={i}
                   onClick={() => handleDayClick(current)}
                 >
+                  {/* {today.format("YYYY-MM-DD") === test
+                    ? scheduleList.map(
+                        (item: ScheduleListType, idx: number) => (
+                          <> */}
                   <div className="date_more">
                     <span>{current.format("D")}</span>
-                    <span>방과후</span>
+                    <span>{StateChangeHook(stateValue?.name)}</span>
                   </div>
                   <div className="teacher_list">
-                    <span>강은빈</span>
-                    <span>강은빈</span>
-                    <span>강은빈</span>
+                    {/* {item.director.map((teacher) => ( */}
+                      <span >강은빈</span>
+                    {/* ))} */}
                   </div>
+                  {/* </>
+                        )
+                      )
+                    : ""} */}
                 </S.BoxItem>
               );
             })}

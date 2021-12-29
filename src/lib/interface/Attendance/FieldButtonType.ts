@@ -1,54 +1,59 @@
+import { LocationType } from "../location";
+
 export interface FieldButtonType {
   id: number;
-  field: string;
+  name: string;
+  floor?: number;
+  major_id?: number;
 }
 
 export const FieldButtonList: FieldButtonType[] = [
   {
     id: 1,
-    field: "외출",
+    name: "외출",
   },
   {
     id: 2,
-    field: "현체",
+    name: "현체",
   },
   {
     id: 3,
-    field: "귀가",
+    name: "귀가",
   },
   {
     id: 4,
-    field: "이동",
+    name: "이동",
   },
   {
     id: 5,
-    field: "취업",
+    name: "취업",
   },
 ];
 
 export const ClassButtonList: FieldButtonType[] = [
   {
-    id: 1,
-    field: "전체",
-  },
-  {
     id: 2,
-    field: "2층",
+    floor: 2,
+    name: "2층",
   },
   {
     id: 3,
-    field: "3층",
+    floor: 3,
+    name: "3층",
   },
   {
     id: 4,
-    field: "4층",
+    floor: 4,
+    name: "4층",
   },
   {
     id: 5,
-    field: "5층",
+    floor: 5,
+    name: "5층",
   },
   {
     id: 6,
-    field: "특별실",
+    floor: 6,
+    name: "특별실",
   },
 ];

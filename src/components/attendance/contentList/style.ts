@@ -89,6 +89,13 @@ export const StudentItem = styled.ul<Props>`
   }
 `;
 
+export const None = styled.div`
+  text-align: center;
+  padding: 30px 0;
+  font-size: 20px;
+  color: gray;
+`;
+
 export const StateSelectWrapper = styled.ul<Props>`
   z-index: 2;
   position: absolute;

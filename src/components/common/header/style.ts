@@ -40,7 +40,8 @@ export const HeaderWrapper = styled.div`
 `;
 
 export const FooterWrapper = styled(HeaderWrapper)`
-  position: fixed;
+  width: 100vw;
+  position: absolute;
   bottom: 0;
   display: flex;
   flex-direction: row;

@@ -6,8 +6,8 @@ import {
 import SelectItem from "./SelectItem";
 import * as S from "./style";
 
-const AttendanceClassBar = () => {
-  const [selected, setSelected] = useState<number>(1);
+const LocationBar = () => {
+  const [selected, setSelected] = useState<number>(2);
 
   const selectedHandlerColor = (item: FieldButtonType) => {
     setSelected(item.id);
@@ -27,4 +27,4 @@ const AttendanceClassBar = () => {
   );
 };
 
-export default AttendanceClassBar;
+export default LocationBar;

@@ -7,7 +7,7 @@ import {
 } from "../../../../lib/interface/Attendance/FieldButtonType";
 import FloorClassItem from "./FloorClassItem";
 import ListContainer from "./ListContainer";
-import location from "../../../../lib/api/location/locationApi";
+import attendance from "../../../../lib/api/attendance";
 
 const AttendanceChangeList = () => {
   const [selected, setSelected] = useState<number>(1);
@@ -15,6 +15,19 @@ const AttendanceChangeList = () => {
   const selectedHandlerColor = (item: FieldButtonType) => {
     setSelected(item.id);
   };
+
+  useEffect(() => {
+    const test = async () => {
+      try {
+        const res = await attendance.getAttendance();
+        return res.data;
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    test().then((res) => console.log(res));
+  }, []);
 
   return (
     <S.MainWrapper>

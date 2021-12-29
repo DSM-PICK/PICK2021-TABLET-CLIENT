@@ -17,9 +17,19 @@ export default {
       url: `/teacher/${id}/information`,
     });
   },
-  getStudentNameApi(name: string) {
+  getStudentNameApi(name: string | undefined) {
     return request({
       url: `/teacher/student?name=${name}`,
+    });
+  },
+  getTeacherListApi() {
+    return request({
+      url: "/teacher/list",
+    });
+  },
+  getTeacherApi(date: string) {
+    return request({
+      url: `/teacher/${date}`,
     });
   },
 };

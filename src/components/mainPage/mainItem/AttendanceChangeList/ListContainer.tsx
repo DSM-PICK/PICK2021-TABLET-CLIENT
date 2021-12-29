@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { useRecoilValue } from "recoil";
+import { attendanceSelector } from "../../../../modules/selector/attendance";
 import ListDeleteModal from "./ListDeleteModal";
+import ListItem from "./ListItem";
 import * as S from "./style";
-
-
 
 const ListContainer = () => {
   const [modal, setModal] = useState<boolean>(false);
+  const attendanceList = useRecoilValue(attendanceSelector);
 
   return (
     <>
@@ -22,69 +24,9 @@ const ListContainer = () => {
         </S.ListHeader>
 
         <S.ListContent>
-          <S.StdListItem onClick={() => setModal(!modal)}>
-            <div className="std">
-              <span>2201 강은빈</span>
-            </div>
-            <span className="state">외출</span>
-            <span className="date">10월 24일 9교시~10월 24일 10교시</span>
-            <span className="reason">병원</span>
-            <span className="teacher">강은빈</span>
-          </S.StdListItem>
-          <S.StdListItem>
-            <div className="std">
-              <span>2201 강은빈</span>
-            </div>
-            <span className="state">외출</span>
-            <span className="date">10월 24일 9교시~10월 24일 10교시</span>
-            <span className="reason">병원</span>
-            <span className="teacher">강은빈</span>
-          </S.StdListItem>
-          <S.StdListItem>
-            <div className="std">
-              <span>2201 강은빈</span>
-            </div>
-            <span className="state">외출</span>
-            <span className="date">10월 24일 9교시~10월 24일 10교시</span>
-            <span className="reason">병원</span>
-            <span className="teacher">강은빈</span>
-          </S.StdListItem>
-          <S.StdListItem>
-            <div className="std">
-              <span>2201 강은빈</span>
-            </div>
-            <span className="state">외출</span>
-            <span className="date">10월 24일 9교시~10월 24일 10교시</span>
-            <span className="reason">병원</span>
-            <span className="teacher">강은빈</span>
-          </S.StdListItem>
-          <S.StdListItem>
-            <div className="std">
-              <span>2201 강은빈</span>
-            </div>
-            <span className="state">외출</span>
-            <span className="date">10월 24일 9교시~10월 24일 10교시</span>
-            <span className="reason">병원</span>
-            <span className="teacher">강은빈</span>
-          </S.StdListItem>
-          <S.StdListItem>
-            <div className="std">
-              <span>2201 강은빈</span>
-            </div>
-            <span className="state">외출</span>
-            <span className="date">10월 24일 9교시~10월 24일 10교시</span>
-            <span className="reason">병원</span>
-            <span className="teacher">강은빈</span>
-          </S.StdListItem>
-          <S.StdListItem>
-            <div className="std">
-              <span>2201 강은빈</span>
-            </div>
-            <span className="state">외출</span>
-            <span className="date">10월 24일 9교시~10월 24일 10교시</span>
-            <span className="reason">병원</span>
-            <span className="teacher">강은빈</span>
-          </S.StdListItem>
+          {attendanceList?.map((item) => (
+            <ListItem setModal={setModal} modal={modal} item={item} />
+          ))}
         </S.ListContent>
       </S.ListBoxWrapper>
     </>

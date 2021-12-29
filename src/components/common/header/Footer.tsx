@@ -6,7 +6,7 @@ import * as S from "./style";
 const Footer = () => {
   return (
     <S.FooterWrapper>
-      <Link to="/">
+      <Link to="/home">
         <img src={NavHomeIcon} alt="" />
       </Link>
       <Link to="/calendar">
