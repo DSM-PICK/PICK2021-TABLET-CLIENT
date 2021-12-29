@@ -1,7 +1,9 @@
 import attendance from "../../../lib/api/attendance";
-import { ATTENDANCE_DELETE } from "../types";
+import { ATTENDANCE_DELETE, ATTENDANCE_GET } from "../types";
 
-export async function attendanceListGet() {
+export async function attendanceListGet(dispatch ?: any) {
+  dispatch({ type: ATTENDANCE_GET });
+
   try {
     const res = await attendance.getAttendance();
     return res.data;
