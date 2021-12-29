@@ -6,11 +6,14 @@ import {
   Footer,
   Header,
 } from "..";
+import ChangeModal from "./clendarChange/modal";
 import * as S from "./style";
 
 const Calendar = () => {
+  
   return (
     <S.CalendarWrap>
+      <ChangeModal />
       <Header />
       <S.Container>
         <CalendarHead />
