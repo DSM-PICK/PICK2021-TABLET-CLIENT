@@ -22,4 +22,9 @@ export default {
       url: `/teacher/student?name=${name}`,
     });
   },
+  getTeacherListApi() {
+    return request({
+      url: "/teacher/list",
+    });
+  },
 };
