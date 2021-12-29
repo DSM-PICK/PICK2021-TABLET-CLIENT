@@ -1,9 +1,16 @@
-import { selectorFamily } from "recoil";
-import { StudentType, TeacherType } from "../../../lib/interface/teacher";
+import { selector, selectorFamily } from "recoil";
+import {
+  StudentType,
+  TeacherInfoType,
+  TeacherType,
+} from "../../../lib/interface/teacher";
 import request from "../../../lib/api/axios";
 import teacher from "../../../lib/api/teacher";
 
-export const teacherInfoSelector = selectorFamily<TeacherType, string | null>({
+export const teacherInfoSelector = selectorFamily<
+  TeacherInfoType,
+  string | null
+>({
   key: "teacherInfoSelector/get",
   get: (id) => async () => {
     if (!id) return "";
@@ -22,6 +29,18 @@ export const studentNameSelector = selectorFamily<StudentType[], string>({
   get: (name) => async () => {
     try {
       const res = await teacher.getStudentNameApi(name);
+      return res.data;
+    } catch (e) {
+      console.log(e);
+    }
+  },
+});
+
+export const teacherListSelector = selector<TeacherType[]>({
+  key: "teacherListSelector/get",
+  get: async () => {
+    try {
+      const res = await teacher.getTeacherListApi();
       return res.data;
     } catch (e) {
       console.log(e);

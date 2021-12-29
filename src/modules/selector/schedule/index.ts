@@ -1,9 +1,10 @@
 import { selectorFamily } from "recoil";
 import schedule from "../../../lib/api/schedule/scheduleApi";
+import { ScheduleListType } from "../../../lib/interface/schedule/schedule";
 
-export const scheduleDateSelector = selectorFamily<any, string>({
+export const scheduleDateSelector = selectorFamily<{ name: string }, string>({
   key: "scheduleDateSelector/get",
-  get: (date) => async () => {
+  get: (date: string) => async () => {
     try {
       const res = await schedule.getScheduleDate(date);
       return res.data;
@@ -13,14 +14,19 @@ export const scheduleDateSelector = selectorFamily<any, string>({
   },
 });
 
-export const scheduleListMonthSelector = selectorFamily<any, number>({
+export const scheduleListMonthSelector = selectorFamily<
+  ScheduleListType[],
+  { year: string; month: string }
+>({
   key: "scheduleListMonthSelector/get",
-  get: (month) => async () => {
-    try {
-      const res = await schedule.getScheduleListMonth(month);
-      return res.data;
-    } catch (e) {
-      console.log(e);
-    }
-  },
+  get:
+    ({ year, month }) =>
+    async () => {
+      try {
+        const res = await schedule.getScheduleListMonth(year, month);
+        return res.data;
+      } catch (e) {
+        console.log(e);
+      }
+    },
 });
