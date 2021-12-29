@@ -33,7 +33,7 @@ export const TitleWrap = styled.section`
 export const CalendarWrap = styled.section`
   margin-top: 20px;
   width: 100%;
-  height: 80%;
+  height: 83%;
 `;
 
 export const CalendarDate = styled.ul`
@@ -79,9 +79,10 @@ export const ContentWrap = styled.div`
   }
 `;
 
-export const ChangerBtnWrap = styled.section`
+export const ChangeBtnWrap = styled.section`
   width: 100%;
   display: flex;
+
   flex-direction: row;
   justify-content: flex-end;
 

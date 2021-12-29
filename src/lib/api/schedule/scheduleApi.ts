@@ -8,9 +8,9 @@ export default {
       method: "get",
     });
   },
-  getScheduleListMonth(month: number) {
+  getScheduleListMonth(year: string, month: string) {
     return request({
-      url: `/schedule/list/${month}`,
+      url: `/schedule/list/${year}/${month}`,
     });
   },
   getScheduleDate(date: string) {
