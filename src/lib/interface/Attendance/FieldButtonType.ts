@@ -29,7 +29,7 @@ export const FieldButtonList: FieldButtonType[] = [
 export const ClassButtonList: FieldButtonType[] = [
   {
     id: 1,
-    field: "특별실",
+    field: "전체",
   },
   {
     id: 2,
@@ -49,6 +49,6 @@ export const ClassButtonList: FieldButtonType[] = [
   },
   {
     id: 6,
-    field: "전체",
+    field: "특별실",
   },
 ];

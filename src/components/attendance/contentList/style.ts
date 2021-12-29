@@ -22,16 +22,16 @@ export const StudentList = styled.section`
       text-align: center;
     }
 
-    li:nth-child(1) {
+    li:nth-of-type(1) {
       width: 10%;
     }
-    li:nth-child(2),
-    li:nth-child(3) {
+    li:nth-of-type(2),
+    li:nth-of-type(3) {
       width: 15%;
     }
-    li:nth-child(4),
-    li:nth-child(5),
-    li:nth-child(6) {
+    li:nth-of-type(4),
+    li:nth-of-type(5),
+    li:nth-of-type(6) {
       width: 20%;
     }
   }
