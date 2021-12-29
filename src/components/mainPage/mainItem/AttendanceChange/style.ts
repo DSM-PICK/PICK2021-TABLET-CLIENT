@@ -1,6 +1,10 @@
 import styled from "@emotion/styled";
 import { BoxColor, MainColor } from "../../../../utils/color/color";
 
+interface Props {
+  clendarOne: boolean;
+}
+
 export const AttendanceChangeWrapper = styled.div`
   margin: 40px 0;
   width: 100%;
@@ -21,7 +25,7 @@ export const ChangeBox = styled.div`
   justify-content: space-evenly;
 `;
 
-export const Enrollment = styled.div`
+export const Enrollment = styled.form`
   width: 55%;
   height: 70%;
   display: flex;
@@ -96,7 +100,7 @@ export const EnrollmentHistory = styled.div`
     .std-info {
       width: 50%;
 
-      span:nth-child(1) {
+      span:nth-of-type(1) {
         margin-right: 10px;
       }
     }
@@ -125,3 +129,17 @@ export const SubTitle = styled.span`
 `;
 
 export const HistoryItem = styled.div``;
+
+export const DateWrapper = styled.div<Props>`
+  display: flex;
+  flex-direction: row;
+
+  .date_item_wrap {
+    display: flex;
+    flex-direction: row;
+  }
+
+  label {
+    display: ${({ clendarOne }) => (clendarOne ? "flex" : "none")};
+  }
+`;

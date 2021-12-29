@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { teacherId } from "../../../lib/api/axios";
+import { teacherInfoSelector } from "../../../modules/selector/teacher";
 import { Logo } from "../../../utils/assets";
 import LogoutModal from "./LogoutModal";
 import * as S from "./style";
 
 const Header = () => {
   const [modal, setModal] = useState<boolean>(false);
+  const info = useRecoilValue(teacherInfoSelector(teacherId));
 
   return (
     <>
@@ -14,7 +18,10 @@ const Header = () => {
         <Link to="/">
           <img src={Logo} alt="pick로고" title="pick로고" />
         </Link>
-        <span onClick={() => setModal(!modal)}>강은빈 선생님</span>
+        <div className="item_box" onClick={() => setModal(!modal)}>
+          <span>감독교사</span>
+          <span>{info?.name}</span>
+        </div>
       </S.HeaderWrapper>
     </>
   );
