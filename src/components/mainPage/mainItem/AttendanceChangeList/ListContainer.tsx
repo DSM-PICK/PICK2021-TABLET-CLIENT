@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import ListDeleteModal from "./ListDeleteModal";
+import ListItem from "./ListItem";
 import * as S from "./style";
-
-
 
 const ListContainer = () => {
   const [modal, setModal] = useState<boolean>(false);
@@ -22,69 +21,7 @@ const ListContainer = () => {
         </S.ListHeader>
 
         <S.ListContent>
-          <S.StdListItem onClick={() => setModal(!modal)}>
-            <div className="std">
-              <span>2201 강은빈</span>
-            </div>
-            <span className="state">외출</span>
-            <span className="date">10월 24일 9교시~10월 24일 10교시</span>
-            <span className="reason">병원</span>
-            <span className="teacher">강은빈</span>
-          </S.StdListItem>
-          <S.StdListItem>
-            <div className="std">
-              <span>2201 강은빈</span>
-            </div>
-            <span className="state">외출</span>
-            <span className="date">10월 24일 9교시~10월 24일 10교시</span>
-            <span className="reason">병원</span>
-            <span className="teacher">강은빈</span>
-          </S.StdListItem>
-          <S.StdListItem>
-            <div className="std">
-              <span>2201 강은빈</span>
-            </div>
-            <span className="state">외출</span>
-            <span className="date">10월 24일 9교시~10월 24일 10교시</span>
-            <span className="reason">병원</span>
-            <span className="teacher">강은빈</span>
-          </S.StdListItem>
-          <S.StdListItem>
-            <div className="std">
-              <span>2201 강은빈</span>
-            </div>
-            <span className="state">외출</span>
-            <span className="date">10월 24일 9교시~10월 24일 10교시</span>
-            <span className="reason">병원</span>
-            <span className="teacher">강은빈</span>
-          </S.StdListItem>
-          <S.StdListItem>
-            <div className="std">
-              <span>2201 강은빈</span>
-            </div>
-            <span className="state">외출</span>
-            <span className="date">10월 24일 9교시~10월 24일 10교시</span>
-            <span className="reason">병원</span>
-            <span className="teacher">강은빈</span>
-          </S.StdListItem>
-          <S.StdListItem>
-            <div className="std">
-              <span>2201 강은빈</span>
-            </div>
-            <span className="state">외출</span>
-            <span className="date">10월 24일 9교시~10월 24일 10교시</span>
-            <span className="reason">병원</span>
-            <span className="teacher">강은빈</span>
-          </S.StdListItem>
-          <S.StdListItem>
-            <div className="std">
-              <span>2201 강은빈</span>
-            </div>
-            <span className="state">외출</span>
-            <span className="date">10월 24일 9교시~10월 24일 10교시</span>
-            <span className="reason">병원</span>
-            <span className="teacher">강은빈</span>
-          </S.StdListItem>
+          <ListItem setModal={setModal} modal={modal} />
         </S.ListContent>
       </S.ListBoxWrapper>
     </>
