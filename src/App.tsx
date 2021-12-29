@@ -7,7 +7,7 @@ function App() {
     <BrowserRouter>
       <Route path="/" component={FirstPage} exact />
       <Route path="/login" component={Login} exact />
-      <Route path="/main" component={MainPage} exact />
+      <Route path="/home" component={MainPage} exact />
       <Route path="/attendance" component={Attendance} exact />
       <Route path="/calendar" component={Calendar} exact />
     </BrowserRouter>
