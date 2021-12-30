@@ -11,7 +11,9 @@ export const dateValue = atom<string>({
   default: "",
 });
 
-export const scheduleState = atom<string>({
-  key: "scheduleState",
-  default: "",
-});
+export const scheduleState = atom<"SELF_STUDY" | "MAJOR" | "AFTER_SCHOOL">(
+  {
+    key: "scheduleState",
+    default: "SELF_STUDY",
+  }
+);
