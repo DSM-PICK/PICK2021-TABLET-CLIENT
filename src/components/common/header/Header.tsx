@@ -15,7 +15,7 @@ const Header = () => {
     <>
       <LogoutModal modal={modal} setModal={setModal} />
       <S.HeaderWrapper>
-        <Link to="/">
+        <Link to="/home">
           <img src={Logo} alt="pick로고" title="pick로고" />
         </Link>
         <div className="item_box" onClick={() => setModal(!modal)}>

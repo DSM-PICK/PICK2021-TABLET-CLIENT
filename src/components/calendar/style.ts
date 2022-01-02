@@ -1,8 +1,10 @@
 import styled from "@emotion/styled";
 
 export const CalendarWrap = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
+  overflow-y: hidden;
 `;
 
 export const Container = styled.div`

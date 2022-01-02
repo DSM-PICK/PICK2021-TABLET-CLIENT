@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { baseURL } from "../../lib/api/axios";
+import { ToastError, ToastSuccess } from "../../lib/hook/\btoastHook";
 import { User } from "../../lib/interface/user";
 import { Logo } from "../../utils/assets";
 import * as S from "./style";
@@ -34,9 +35,13 @@ const Login = () => {
         localStorage.setItem("access_token", res.data.access_token);
         localStorage.setItem("refresh_token", res.data.refresh_token);
         localStorage.setItem("teacher_id", res.data.teacher_id);
-        push("/main");
+        ToastSuccess("로그인에 성공했습니다.");
+        push("/home");
       })
-      .catch((e) => console.log(e));
+      .catch((e) => {
+        console.log(e);
+        ToastError("정보를 다시 입력해주세요");
+      });
 
     setInputs({ id: "", password: "" });
   };

@@ -1,10 +1,11 @@
 import React from "react";
 import { MainColor } from "../../../../utils/color/color";
-import { FieldButtonType } from "../../../../lib/interface/Attendance/FieldButtonType";
 import * as S from "./style";
+import { LocationType } from "../../../../lib/interface/location";
+import { FieldButtonType } from "../../../../lib/interface/Attendance/FieldButtonType";
 
 interface Props {
-  item: FieldButtonType;
+  item: LocationType | FieldButtonType;
   selected: number;
   selectedHandlerColor: any;
 }
@@ -18,7 +19,7 @@ const FloorClassItem = ({ item, selectedHandlerColor, selected }: Props) => {
         fontWeight: item.id === selected ? 700 : "normal",
       }}
     >
-      {item.field}
+      {item.name}
     </S.ItemButton>
   );
 };

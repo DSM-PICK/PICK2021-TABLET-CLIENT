@@ -2,7 +2,10 @@ import { selectorFamily } from "recoil";
 import schedule from "../../../lib/api/schedule/scheduleApi";
 import { ScheduleListType } from "../../../lib/interface/schedule/schedule";
 
-export const scheduleDateSelector = selectorFamily<{ name: string }, string>({
+export const scheduleDateSelector = selectorFamily<
+  { name: "SELF_STUDY" | "MAJOR" | "AFTER_SCHOOL" },
+  string
+>({
   key: "scheduleDateSelector/get",
   get: (date: string) => async () => {
     try {

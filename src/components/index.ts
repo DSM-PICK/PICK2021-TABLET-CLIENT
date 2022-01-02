@@ -10,7 +10,8 @@ export { default as AttendanceChangeList } from "./mainPage/mainItem/AttendanceC
 export { default as FieldButton } from "./mainPage/mainItem/AttendanceChange/FieldButton";
 export { default as SubTitle } from "./mainPage/mainItem/items/SubTitle";
 export { default as Attendance } from "./attendance/Attendance";
-export { default as AttendanceClassBar } from "./attendance/attendanceBar/AttendanceClassBar";
+export { default as LocationBar } from "./attendance/attendanceBar/LocationBar";
+export { default as LocationDetailBar } from "./attendance/attendanceBar/LocationDetailBar";
 export { default as ContentHeader } from "./attendance/contentHeader/ContentHeader";
 export { default as ContentList } from "./attendance/contentList/ContentList";
 export { default as StudentItem } from "./attendance/contentList/StdListItem";

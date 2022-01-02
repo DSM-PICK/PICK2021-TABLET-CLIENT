@@ -8,11 +8,12 @@ import {
 } from "..";
 import ChangeModal from "./clendarChange/modal";
 import * as S from "./style";
+import { ToastContainer } from "react-toastify";
 
 const Calendar = () => {
-  
   return (
     <S.CalendarWrap>
+      <ToastContainer />
       <ChangeModal />
       <Header />
       <S.Container>

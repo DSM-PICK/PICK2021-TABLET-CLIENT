@@ -1,11 +1,16 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { StudentItem } from "../..";
+import { MajorDetailType } from "../../../lib/interface/major";
 import { selectCount } from "../../../modules/atom/attendance";
 import MoveModal from "../moveModal/MoveModal";
 import * as S from "./style";
 
-const ContentList = () => {
+interface Props {
+  info: MajorDetailType;
+}
+
+const ContentList = ({ info }: Props) => {
   const count = useRecoilValue(selectCount);
 
   return (
@@ -21,12 +26,17 @@ const ContentList = () => {
           <li>10교시</li>
         </ul>
         <div className="student-list">
-          <StudentItem />
-          <StudentItem />
-          <StudentItem />
-          <StudentItem />
+          {info?.count === 0 ? (
+            <S.None>학생이 없습니다.</S.None>
+          ) : (
+            <>
+              {info?.members.map((item) => (
+                <StudentItem key={item.student_id} item={item} />
+              ))}
+              <span className="count">{count}명 선택됨</span>
+            </>
+          )}
         </div>
-        <span className="count">{count}명 선택됨</span>
       </S.StudentList>
     </>
   );
