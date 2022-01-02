@@ -17,16 +17,24 @@ export default {
       url: `/schedule/${date}`,
     });
   },
-  patchSchedule(
-    date: string,
-    name: "SELF_STUDY" | "MAJOR" | "AFTER_SCHOOL"
-  ) {
+  patchSchedule(date: string, name: "SELF_STUDY" | "MAJOR" | "AFTER_SCHOOL") {
     return request({
       url: "/schedule",
       method: "patch",
       data: {
         date,
         name,
+      },
+    });
+  },
+  patchTeacher(date: string, floor: number, teacher_id: string) {
+    return request({
+      url: "/schedule/director",
+      method: "patch",
+      data: {
+        date,
+        floor,
+        teacher_id,
       },
     });
   },
