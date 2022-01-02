@@ -1,29 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { ClassButtonList } from "../../../lib/interface/Attendance/FieldButtonType";
-import { LocationType } from "../../../lib/interface/location";
-import { FloorId } from "../../../modules/atom/location";
-import { locationListSelector } from "../../../modules/selector/location";
+import React, { useState } from "react";
+import {
+  ClassButtonList,
+  FieldButtonType,
+} from "../../../lib/interface/Attendance/FieldButtonType";
 import SelectItem from "./SelectItem";
 import * as S from "./style";
 
 const LocationBar = () => {
-  const [selected, setSelected] = useState<number>(1);
-  const [floor, setFloor] = useRecoilState(FloorId);
-  // const location = useRecoilValue(locationListSelector);
+  const [selected, setSelected] = useState<number>(2);
 
-  useEffect(() => {
-     console.log(floor);
-  }, [floor]);
-
-  const selectedHandlerColor = (item: LocationType) => {
+  const selectedHandlerColor = (item: FieldButtonType) => {
     setSelected(item.id);
-    setFloor(item.id);
   };
 
   return (
     <S.SelectBarWrapper>
-      {ClassButtonList.map((item: LocationType) => (
+      {ClassButtonList.map((item: FieldButtonType) => (
         <SelectItem
           key={item.id}
           item={item}
