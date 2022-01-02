@@ -8,4 +8,9 @@ export default {
       method: "get",
     });
   },
+  getLocationFloor(floor: number) {
+    return request({
+      url: `/location/${floor}`,
+    });
+  },
 };

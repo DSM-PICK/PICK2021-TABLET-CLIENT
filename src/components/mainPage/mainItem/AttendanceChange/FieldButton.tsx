@@ -25,14 +25,14 @@ const FieldButton = (props: Props) => {
     <S.FieldButton
       onClick={() => {
         props.selectedHandlerColor(props.item);
-        onChange(props.item.field);
+        onChange(props.item.name);
       }}
       style={{
         background: props.item.id === props.selected ? `${MainColor}` : "",
         color: props.item.id === props.selected ? "white" : "black",
       }}
     >
-      {props.item.field}
+      {props.item.name}
     </S.FieldButton>
   );
 };

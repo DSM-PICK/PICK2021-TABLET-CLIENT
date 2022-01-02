@@ -7,7 +7,7 @@ interface Props {
 
 export const ChangeWrapper = styled.div<Props>`
   display: flex;
-  margin-right: ${({ modalOpen }) => (modalOpen ? "0" : "-500px")};
+  transform: ${({ modalOpen }) => (modalOpen ? "translateX(0)" : "translateX(800px)")};
   flex-direction: column;
   justify-content: space-between;
   width: 60%;

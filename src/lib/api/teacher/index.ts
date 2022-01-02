@@ -27,4 +27,9 @@ export default {
       url: "/teacher/list",
     });
   },
+  getTeacherApi(date: string) {
+    return request({
+      url: `/teacher/${date}`,
+    });
+  },
 };

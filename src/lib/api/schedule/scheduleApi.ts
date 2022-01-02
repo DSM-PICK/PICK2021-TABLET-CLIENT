@@ -5,7 +5,6 @@ export default {
   getScheduleName() {
     return request({
       url: "/schedule/name",
-      method: "get",
     });
   },
   getScheduleListMonth(year: string, month: string) {
@@ -16,6 +15,27 @@ export default {
   getScheduleDate(date: string) {
     return request({
       url: `/schedule/${date}`,
+    });
+  },
+  patchSchedule(date: string, name: "SELF_STUDY" | "MAJOR" | "AFTER_SCHOOL") {
+    return request({
+      url: "/schedule",
+      method: "patch",
+      data: {
+        date,
+        name,
+      },
+    });
+  },
+  patchTeacher(date: string, floor: number, teacher_id: string) {
+    return request({
+      url: "/schedule/director",
+      method: "patch",
+      data: {
+        date,
+        floor,
+        teacher_id,
+      },
     });
   },
 };

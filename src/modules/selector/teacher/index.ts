@@ -1,6 +1,7 @@
 import { selector, selectorFamily } from "recoil";
 import {
   StudentType,
+  TeacherFloorType,
   TeacherInfoType,
   TeacherType,
 } from "../../../lib/interface/teacher";
@@ -42,6 +43,18 @@ export const teacherListSelector = selector<TeacherType[]>({
     try {
       const res = await teacher.getTeacherListApi();
       return res.data;
+    } catch (e) {
+      console.log(e);
+    }
+  },
+});
+
+export const teacherSelector = selectorFamily<TeacherFloorType[], string>({
+  key: "teacher/get",
+  get: (date) => async () => {
+    try {
+      const res = await teacher.getTeacherApi(date);
+      return res.data.teachers;
     } catch (e) {
       console.log(e);
     }
