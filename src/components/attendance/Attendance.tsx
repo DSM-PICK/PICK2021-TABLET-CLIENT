@@ -1,37 +1,39 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import {
-  AttendanceClassBar,
+  LocationBar,
   ContentHeader,
   ContentList,
   Footer,
   Header,
+  LocationDetailBar,
 } from "..";
-import scheduleApi from "../../lib/api/schedule/scheduleApi";
+import { majorDetailSelector } from "../../modules/selector/major";
 import * as S from "./style";
+import QueryString from "query-string";
+import { useEffect } from "react";
 
 const Attendance = () => {
-  const test = async () => {
-    const data = await scheduleApi.getScheduleName();
+  const location = useLocation();
+  const queryData = QueryString.parse(location.search);
+  const id: any = queryData.id;
 
-    console.log(data);
-    return data;
-  };
+  const attendanceInfo = useRecoilValue(majorDetailSelector(id));
 
   useEffect(() => {
-    test();
-  }, []);
+    console.log(attendanceInfo);
+  }, [attendanceInfo]);
 
   return (
     <>
       <S.MainWrapper>
         <Header />
         <Footer />
-        <AttendanceClassBar />
-        <AttendanceClassBar />
+        <LocationBar />
+        <LocationDetailBar />
         <S.ContentWrapper>
-          <ContentHeader />
-          <ContentList />
+          <ContentHeader info={attendanceInfo} />
+          <ContentList info={attendanceInfo} />
         </S.ContentWrapper>
       </S.MainWrapper>
     </>
