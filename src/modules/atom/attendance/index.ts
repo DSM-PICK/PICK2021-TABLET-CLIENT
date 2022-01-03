@@ -1,6 +1,7 @@
 import { atom } from "recoil";
-import { teacherId } from "../../../lib/api/axios";
-import { AttendanceType } from "../../../lib/interface/Attendance";
+import {
+  AttendancePostType
+} from "../../../lib/interface/Attendance";
 
 export const moveModal = atom({
   key: "modal",
@@ -22,20 +23,17 @@ export const selectCount = atom({
   default: 0,
 });
 
-export const attendanceData = atom<AttendanceType>({
+export const attendanceData = atom<AttendancePostType>({
   key: "attendance",
   default: {
-    id: "",
-    name: "",
-    period: 0,
+    student_id: 0,
     state: "",
-    memo: "",
     term: "",
     reason: "",
   },
 });
 
-export const attendanceDataList = atom<AttendanceType[]>({
+export const attendanceDataList = atom<AttendancePostType[]>({
   key: "attendanceList",
   default: [],
 });
