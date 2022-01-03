@@ -1,6 +1,7 @@
 import { atom } from "recoil";
 import { AttendancePostType } from "../../../lib/interface/Attendance";
 
+
 export const moveModal = atom({
   key: "modal",
   default: false,
