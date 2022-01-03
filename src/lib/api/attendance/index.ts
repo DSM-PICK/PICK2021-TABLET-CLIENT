@@ -1,4 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
+import { AttendancePostType } from "../../interface/Attendance";
 import request from "../axios";
 
 export default {
@@ -14,11 +15,16 @@ export default {
       data: { id },
     });
   },
-  patchAttendance(data: string) {
+  postAttendance(data: AttendancePostType) {
     return request({
       url: "/attendance",
-      method: "patch",
-      data: { data },
+      method: "post",
+      data: {
+        student_id: data.student_id,
+        state: data.state,
+        term: data.term,
+        reason: data.reason,
+      },
     });
   },
   patchAttendanceState(state: string) {
