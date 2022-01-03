@@ -69,11 +69,12 @@ const AttendanceChange = () => {
     setAttendanceList(attendanceList.concat(attendance));
 
     setAttendance({
-      student_id: "",
+      id: "",
       name: "",
-      period: "",
+      period: 0,
       state: "",
       memo: "",
+      term: "",
       reason: "",
     });
   };
