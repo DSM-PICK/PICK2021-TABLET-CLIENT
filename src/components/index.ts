@@ -5,7 +5,7 @@ export { default as MainPage } from "./mainPage/MainPage";
 export { default as Title } from "./mainPage/mainItem/Title";
 export { default as AttendanceSelect } from "./mainPage/mainItem/AttendanceSelect";
 export { default as AttendanceChange } from "./mainPage/mainItem/AttendanceChange/AttendanceChange";
-export { default as EnrollmentHistory } from "./mainPage/mainItem/AttendanceChange/EnrollmentHistory";
+export { default as EnrollmentHistory } from "./mainPage/mainItem/AttendanceChange/historyList";
 export { default as AttendanceChangeList } from "./mainPage/mainItem/AttendanceChangeList/AttendanceChangeList";
 export { default as FieldButton } from "./mainPage/mainItem/AttendanceChange/FieldButton";
 export { default as SubTitle } from "./mainPage/mainItem/items/SubTitle";
@@ -21,3 +21,7 @@ export { default as CalendarContent } from "./calendar/calendarItem/CalendarCont
 export { default as CalendarChangeBtn } from "./calendar/calendarItem/CalendarChangeBtn";
 export { default as FirstPage } from "./common/firstPage";
 export { default as Login } from "./login";
+export { default as NameItem } from "./mainPage/mainItem/AttendanceChange/name";
+export { default as StateItem } from "./mainPage/mainItem/AttendanceChange/state";
+export { default as ReasonItem } from "./mainPage/mainItem/AttendanceChange/reason";
+export { default as CalendarItem } from "./mainPage/mainItem/AttendanceChange/date";
