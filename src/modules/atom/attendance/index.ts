@@ -25,12 +25,12 @@ export const selectCount = atom({
 export const attendanceData = atom<AttendanceType>({
   key: "attendance",
   default: {
-    student_id: "",
+    id: "",
     name: "",
-    director_id: teacherId,
-    period: "",
+    period: 0,
     state: "",
     memo: "",
+    term: "",
     reason: "",
   },
 });
