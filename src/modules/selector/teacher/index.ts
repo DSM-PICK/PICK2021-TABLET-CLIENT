@@ -25,7 +25,10 @@ export const teacherInfoSelector = selectorFamily<
   },
 });
 
-export const studentNameSelector = selectorFamily<StudentType[], string>({
+export const studentNameSelector = selectorFamily<
+  StudentType[],
+  string | undefined
+>({
   key: "studentNameSelector/get",
   get: (name) => async () => {
     try {

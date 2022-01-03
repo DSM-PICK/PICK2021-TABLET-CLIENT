@@ -21,7 +21,13 @@ const ListDeleteModal = ({ modal, setModal }: Props) => {
         <span>출결 변동 사항을 삭제하시겠습니까?</span>
 
         <div className="button-wrapper">
-          <button onClick={() => setModal(!modal)}>삭제</button>
+          <button
+            onClick={() => {
+              setModal(!modal);
+            }}
+          >
+            삭제
+          </button>
           <button onClick={() => setModal(!modal)}>취소</button>
         </div>
       </div>
