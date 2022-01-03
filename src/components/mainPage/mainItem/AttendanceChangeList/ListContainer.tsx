@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { useRecoilValue } from "recoil";
+import { attendanceSelector } from "../../../../modules/selector/attendance";
 import ListDeleteModal from "./ListDeleteModal";
 import ListItem from "./ListItem";
 import * as S from "./style";
 
 const ListContainer = () => {
   const [modal, setModal] = useState<boolean>(false);
+  const attendanceList = useRecoilValue(attendanceSelector);
 
   return (
     <>
@@ -21,7 +24,9 @@ const ListContainer = () => {
         </S.ListHeader>
 
         <S.ListContent>
-          <ListItem setModal={setModal} modal={modal} />
+          {attendanceList?.map((item) => (
+            <ListItem setModal={setModal} modal={modal} item={item} />
+          ))}
         </S.ListContent>
       </S.ListBoxWrapper>
     </>
