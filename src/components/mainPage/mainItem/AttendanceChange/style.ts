@@ -1,10 +1,6 @@
 import styled from "@emotion/styled";
 import { BoxColor, MainColor } from "../../../../utils/color/color";
 
-interface Props {
-  clendarOne: boolean;
-}
-
 export const AttendanceChangeWrapper = styled.div`
   margin: 40px 0;
   width: 100%;
@@ -31,32 +27,32 @@ export const Enrollment = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+`;
 
-  .enrollment-item {
+export const EnrollmentItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .field-item {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  }
 
-    .field-item {
-      display: flex;
-    }
+  .react-datepicker-wrapper {
+    width: auto;
+  }
 
-    .react-datepicker-wrapper {
-      width: auto;
-    }
+  .example-custom-input {
+    background: white;
+    border: none;
+  }
 
-    .example-custom-input {
-      background: white;
-      border: none;
-    }
-
-    .text-input {
-      border-bottom: 1px solid black;
-      outline: none;
-      border: none;
-      text-align: center;
-      font-size: 18px;
-    }
+  .text-input {
+    border-bottom: 1px solid black;
+    outline: none;
+    border: none;
+    text-align: center;
+    font-size: 18px;
   }
 `;
 
@@ -77,7 +73,7 @@ export const SaveButton = styled.button`
   margin: 2px 0;
 `;
 
-export const EnrollmentHistory = styled.div`
+export const EnrollmentHistory = styled.form`
   width: 35%;
   height: 70%;
   display: flex;
@@ -129,17 +125,3 @@ export const SubTitle = styled.span`
 `;
 
 export const HistoryItem = styled.div``;
-
-export const DateWrapper = styled.div<Props>`
-  display: flex;
-  flex-direction: row;
-
-  .date_item_wrap {
-    display: flex;
-    flex-direction: row;
-  }
-
-  label {
-    display: ${({ clendarOne }) => (clendarOne ? "flex" : "none")};
-  }
-`;
