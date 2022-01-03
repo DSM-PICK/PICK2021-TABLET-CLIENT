@@ -1,27 +1,41 @@
 import React, { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { DateNonYearHook } from "../../../../../lib/hook/dateChangeHook";
 import { DatePeriodChangeHook } from "../../../../../lib/hook/datePeriodChangeHook";
 import { DateSplitHook } from "../../../../../lib/hook/dateSplitHook";
 import { attendanceData } from "../../../../../modules/atom/attendance";
+import {
+  calendarEndModal,
+  calendarModal,
+  endDateValue,
+  startDateValue,
+} from "../../../../../modules/atom/calendar";
 import { EnrollmentItem } from "../style";
+import CalendarEndModal from "./CalendarEndModal";
+import CalendarModal from "./CalendarModal";
 import * as S from "./style";
 
 const CalendarItem = () => {
+  const setOpen = useSetRecoilState(calendarModal);
+  const setSecOpen = useSetRecoilState(calendarEndModal);
+
   const [attendance, setAttendance] = useRecoilState(attendanceData);
-  const [clendarOne, setClendarOne] = useState<boolean>(false);
-  const [startDate, setStartDate] = useState<any>(new Date());
-  const [endDate, setEndDate] = useState<any>(new Date());
+  const startDate = useRecoilValue(startDateValue);
+  const endDate = useRecoilValue(endDateValue);
   const [dateValue, setDateValue] = useState<any>(DateSplitHook(startDate));
+  const [dateSecValue, setDateSecValue] = useState<any>(DateSplitHook(endDate));
+
   const [date, setDate] = useState({
-    startDate: startDate.toISOString().split("T")[0],
-    endDate: endDate.toISOString().split("T")[0],
+    startDate: startDate.format("YYYY-MM-DD"),
+    endDate: endDate.format("YYYY-MM-DD"),
     startPeriod: "",
     endPeriod: "",
   });
 
   useEffect(() => {
-    console.log(date);
-  }, [date]);
+    setDateValue(DateNonYearHook(startDate.format("MM-DD")));
+    setDateSecValue(DateNonYearHook(endDate.format("MM-DD")));
+  }, [date, startDate, dateValue, endDate]);
 
   useEffect(() => {
     setAttendance({
@@ -30,46 +44,56 @@ const CalendarItem = () => {
     });
   }, [date]);
 
+  useEffect(() => {
+    setDate({
+      ...date,
+      startDate: startDate.format("YYYY-MM-DD"),
+      endDate: endDate.format("YYYY-MM-DD"),
+    });
+  }, [startDate, endDate]);
+
   return (
-    <EnrollmentItem>
-      <S.SubTitle>날짜</S.SubTitle>
-      <S.DateWrapper clendarOne={clendarOne}>
-        <div className="date_item_wrap">
-          <span
-            onClick={() => setClendarOne(!clendarOne)}
-          >{`${dateValue[1]}월 ${dateValue[2]}일`}</span>
-          <div className="date_period">
-            <input
-              type="text"
-              placeholder="_"
-              onChange={(e) =>
-                setDate({
-                  ...date,
-                  startPeriod: e.target.value,
-                })
-              }
-            />
-            <span>교시 ~ </span>
+    <>
+      <CalendarModal />
+      <CalendarEndModal />
+      <EnrollmentItem>
+        <S.SubTitle>날짜</S.SubTitle>
+        <S.DateWrapper>
+          <div className="date_item_wrap">
+            <span onClick={() => setOpen(true)}>{dateValue}</span>
+            <div className="date_period">
+              <input
+                type="text"
+                placeholder="_"
+                onChange={(e) =>
+                  setDate({
+                    ...date,
+                    startPeriod: e.target.value,
+                  })
+                }
+              />
+              <span>교시 ~ </span>
+            </div>
           </div>
-        </div>
-        <div className="date_item_wrap">
-          <span>{` ${dateValue[1]}월 ${dateValue[2]}일`}</span>
-          <div className="date_period">
-            <input
-              type="text"
-              placeholder="_"
-              onChange={(e) =>
-                setDate({
-                  ...date,
-                  endPeriod: e.target.value,
-                })
-              }
-            />
-            <span>교시</span>
+          <div className="date_item_wrap">
+            <span onClick={() => setSecOpen(true)}>{dateSecValue}</span>
+            <div className="date_period">
+              <input
+                type="text"
+                placeholder="_"
+                onChange={(e) =>
+                  setDate({
+                    ...date,
+                    endPeriod: e.target.value,
+                  })
+                }
+              />
+              <span>교시</span>
+            </div>
           </div>
-        </div>
-      </S.DateWrapper>
-    </EnrollmentItem>
+        </S.DateWrapper>
+      </EnrollmentItem>
+    </>
   );
 };
 

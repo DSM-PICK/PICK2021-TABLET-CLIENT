@@ -11,9 +11,27 @@ export const dateValue = atom<string>({
   default: "",
 });
 
-export const scheduleState = atom<"SELF_STUDY" | "MAJOR" | "AFTER_SCHOOL">(
-  {
-    key: "scheduleState",
-    default: "SELF_STUDY",
-  }
-);
+export const scheduleState = atom<"SELF_STUDY" | "MAJOR" | "AFTER_SCHOOL">({
+  key: "scheduleState",
+  default: "SELF_STUDY",
+});
+
+export const startDateValue = atom<moment.Moment>({
+  key: "startDateValue",
+  default: moment(),
+});
+
+export const endDateValue = atom<moment.Moment>({
+  key: "endDateValue",
+  default: moment(),
+});
+
+export const calendarModal = atom<boolean>({
+  key: "calendarModal",
+  default: false,
+});
+
+export const calendarEndModal = atom<boolean>({
+  key: "calendarEndModal",
+  default: false,
+});
