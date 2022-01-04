@@ -4,6 +4,8 @@ import * as S from "./style";
 import { LocationType } from "../../../lib/interface/location";
 import { useHistory } from "react-router-dom";
 import { FieldButtonType } from "../../../lib/interface/Attendance/FieldButtonType";
+import { useRecoilState } from "recoil";
+import { floorData } from "../../../modules/atom/attendance";
 
 interface Props {
   item: LocationType | FieldButtonType;
@@ -13,12 +15,13 @@ interface Props {
 
 const SelectItem = ({ item, selected, selectedHandlerColor }: Props) => {
   const { push } = useHistory();
+  const [floor, setFloor] = useRecoilState(floorData);
 
   return (
     <S.SelectItem
       onClick={() => {
         selectedHandlerColor(item);
-        push(`/attendance?floor=${item?.floor}&id=${item.major_id}`);
+        push(`/attendance?floor=${floor}&id=${item.major_id}`);
       }}
       style={
         selected === item.id
