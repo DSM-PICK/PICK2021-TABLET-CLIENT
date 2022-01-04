@@ -25,7 +25,7 @@ export const attendanceData = atom<AttendancePostType>({
   key: "attendance",
   default: {
     student_id: 0,
-    state: "",
+    state: "이동",
     term: "",
     reason: "",
   },
@@ -34,4 +34,9 @@ export const attendanceData = atom<AttendancePostType>({
 export const attendanceDataList = atom<AttendancePostType[]>({
   key: "attendanceList",
   default: [],
+});
+
+export const floorData = atom<number>({
+  key: "floorData",
+  default: 2,
 });
