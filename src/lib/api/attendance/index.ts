@@ -2,6 +2,8 @@
 import { AttendancePostType } from "../../interface/Attendance";
 import request from "../axios";
 
+const teacher_id = localStorage.getItem('teacher_id')
+
 export default {
   getAttendance() {
     return request({
@@ -20,6 +22,7 @@ export default {
       url: "/attendance",
       method: "post",
       data: {
+        teacher_id : teacher_id,
         student_id: data.student_id,
         state: data.state,
         term: data.term,
