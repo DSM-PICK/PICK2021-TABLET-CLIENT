@@ -15,9 +15,9 @@ export function DatePeriodHook(date: string) {
 
   return (
     start?.[1] +
-    "월 " +
+    "월" +
     start?.[2] +
-    "일 " +
+    "일  " +
     start?.[3] +
     "교시 ~ " +
     end?.[1] +
