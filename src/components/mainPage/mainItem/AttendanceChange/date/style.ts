@@ -124,6 +124,7 @@ export const DateWrapper = styled.div`
 
     span {
       margin-left: 5px;
+      font-size: 17px;
     }
 
     .date_period {

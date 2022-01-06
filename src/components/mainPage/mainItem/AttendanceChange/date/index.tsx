@@ -33,8 +33,8 @@ const CalendarItem = () => {
   });
 
   useEffect(() => {
-    setDateValue(DateNonYearHook(startDate.format("MM-DD")));
-    setDateSecValue(DateNonYearHook(endDate.format("MM-DD")));
+    setDateValue(DateNonYearHook(startDate.format("M-D")));
+    setDateSecValue(DateNonYearHook(endDate.format("M-D")));
   }, [date, startDate, dateValue, endDate]);
 
   useEffect(() => {
