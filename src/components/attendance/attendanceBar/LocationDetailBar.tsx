@@ -19,6 +19,7 @@ const LocationDetailBar = () => {
 
   const selectedHandlerColor = (item: LocationType) => {
     setSelected(item.id);
+    
   };
 
   return (
