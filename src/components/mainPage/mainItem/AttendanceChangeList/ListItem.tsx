@@ -22,12 +22,14 @@ const ListItem = ({ modal, setModal, item }: Props) => {
     <>
       <S.StdListItem onClick={() => setModal(!modal)}>
         <div className="std">
-          <span>2201 강은빈</span>
+          <span>
+            {item?.student?.gcn} {item?.student?.name}
+          </span>
         </div>
         <span className="state">{item.state}</span>
         <span className="date">{DatePeriodHook(item.term)}</span>
         <span className="reason">{item.reason}</span>
-        <span className="teacher">강은빈</span>
+        <span className="teacher"></span>
       </S.StdListItem>
     </>
   );
