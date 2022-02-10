@@ -1,6 +1,11 @@
 export interface TeacherType {
   name: string;
   teacher_id: string;
+  date: string;
+}
+
+export interface ScheduleTeacherType extends TeacherType {
+  floor: number;
 }
 
 export interface TeacherFloorType {

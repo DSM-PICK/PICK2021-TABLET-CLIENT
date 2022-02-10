@@ -17,10 +17,7 @@ export const scheduleDateSelector = selectorFamily<
   },
 });
 
-export const scheduleListMonthSelector = selectorFamily<
-  ScheduleListType[],
-  { year: string; month: string }
->({
+export const scheduleListMonthSelector = selectorFamily<ScheduleListType[],{ year: string; month: string }>({
   key: "scheduleListMonthSelector/get",
   get:
     ({ year, month }) =>

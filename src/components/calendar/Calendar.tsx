@@ -1,4 +1,3 @@
-import React from "react";
 import {
   CalendarChangeBtn,
   CalendarContent,
@@ -6,7 +5,7 @@ import {
   Footer,
   Header,
 } from "..";
-import ChangeModal from "./clendarChange/modal";
+import ChangeModal from "./clendarChange";
 import * as S from "./style";
 import { ToastContainer } from "react-toastify";
 
