@@ -6,7 +6,6 @@ import { locationFloorSelector } from "../../../modules/selector/location";
 import SelectItem from "./SelectItem";
 import * as S from "./style";
 import QueryString from "query-string";
-import { floorData } from "../../../modules/atom/attendance";
 
 const LocationDetailBar = () => {
   const [selected, setSelected] = useState<number>(1);
