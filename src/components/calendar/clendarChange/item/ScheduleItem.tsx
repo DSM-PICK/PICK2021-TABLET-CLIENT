@@ -14,10 +14,10 @@ const ScheduleItem = () => {
 
   // 일정에 대한 state : 방과후 / 동아리 / 자습
   const { data: stateValue } = useQuery(
-    ["state_value"],
+    ["state_value", baseDate],
     () => schedule.getScheduleDate(baseDate.format("YYYY-MM-DD")),
     {
-      //enabled: !!state,
+      enabled: !!baseDate,
       cacheTime: Infinity,
       staleTime: Infinity,
     }
