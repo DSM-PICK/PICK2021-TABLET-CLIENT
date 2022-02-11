@@ -1,4 +1,3 @@
-import React from "react";
 import { useRecoilValue } from "recoil";
 import { teacherId } from "../../../lib/api/axios";
 import { teacherInfoSelector } from "../../../modules/selector/teacher";

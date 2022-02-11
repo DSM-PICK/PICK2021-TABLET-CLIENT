@@ -23,8 +23,6 @@ const ScheduleItem = () => {
     }
   );
 
-  console.log(stateValue?.data);
-
   const { mutate: patchScheduleHandle } = useMutation(
     (state: "SELF_STUDY" | "MAJOR" | "AFTER_SCHOOL") =>
       schedule.patchSchedule(baseDate.format("YYYY-MM-DD"), state),

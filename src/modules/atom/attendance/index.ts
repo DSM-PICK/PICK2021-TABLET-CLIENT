@@ -1,7 +1,6 @@
 import { atom } from "recoil";
 import { AttendancePostType } from "../../../lib/interface/Attendance";
 
-
 export const moveModal = atom({
   key: "modal",
   default: false,
@@ -37,7 +36,7 @@ export const attendanceDataList = atom<AttendancePostType[]>({
   default: [],
 });
 
-export const floorData = atom<number>({
+export const floorData = atom<number | undefined>({
   key: "floorData",
   default: 2,
 });

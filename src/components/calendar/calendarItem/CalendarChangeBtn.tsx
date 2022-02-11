@@ -1,4 +1,4 @@
-import React from "react";
+
 import { useSetRecoilState } from "recoil";
 import { modal } from "../../../modules/atom/schedule";
 import * as S from "./style";

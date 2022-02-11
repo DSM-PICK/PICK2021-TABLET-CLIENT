@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { moveModal } from "../../../modules/atom/attendance/index";
 import { Close } from "../../../utils/assets";

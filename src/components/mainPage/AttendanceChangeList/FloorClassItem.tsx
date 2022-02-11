@@ -19,7 +19,7 @@ const FloorClassItem = ({ item, selectedHandlerColor, selected }: Props) => {
         fontWeight: item.id === selected ? 700 : "normal",
       }}
     >
-      {item.name}
+      {item?.name}
     </S.ItemButton>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { MemberType } from "../../../lib/interface/major";
 import { selectCount } from "../../../modules/atom/attendance";
@@ -11,7 +11,7 @@ interface Props {
 
 const StdListItem = ({ item }: Props) => {
   const [count, setCount] = useRecoilState<number>(selectCount);
-  const [check, setCheck] = useState<boolean>(false); 
+  const [check, setCheck] = useState<boolean>(false);
 
   const std = ["8교시", "9교시", "10교시"];
 

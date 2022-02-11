@@ -1,4 +1,3 @@
-import React from "react";
 import { useRecoilValue } from "recoil";
 import { StudentItem } from "../..";
 import { MajorDetailType } from "../../../lib/interface/major";

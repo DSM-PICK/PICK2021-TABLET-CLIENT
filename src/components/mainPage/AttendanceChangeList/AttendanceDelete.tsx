@@ -1,4 +1,3 @@
-import React from "react";
 import { Close, Logo } from "../../../utils/assets";
 import * as S from "./style";
 

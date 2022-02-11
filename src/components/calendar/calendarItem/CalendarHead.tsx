@@ -1,4 +1,3 @@
-import React from "react";
 import { useRecoilState } from "recoil";
 import { date } from "../../../modules/atom/calendar";
 import * as S from "./style";

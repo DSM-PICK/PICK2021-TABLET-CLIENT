@@ -1,4 +1,3 @@
-import React from "react";
 import { MajorDetailType } from "../../../lib/interface/major";
 import * as S from "./style";
 

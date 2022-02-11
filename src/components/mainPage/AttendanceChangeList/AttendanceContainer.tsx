@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ListDeleteModal from "./AttedanceDelete";
-import ListItem from "./AttedanceItem";
+import ListDeleteModal from "./AttendanceDelete";
+import ListItem from "./AttendanceItem";
 import attendance from "../../../lib/api/attendance";
 import * as S from "./style";
 import { useQuery } from "react-query";

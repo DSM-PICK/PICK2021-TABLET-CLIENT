@@ -10,7 +10,7 @@ export { default as AttendanceChangeList } from "./mainPage/AttendanceChangeList
 export { default as FieldButton } from "./mainPage/AttendanceChange/FieldButton";
 export { default as SubTitle } from "./mainPage/items/SubTitle";
 export { default as Attendance } from "./attendance/Attendance";
-export { default as LocationBar } from "./attendance/attendanceBar/LocationBar";
+export { default as LocationBar } from "./attendance/attendanceBar";
 export { default as LocationDetailBar } from "./attendance/attendanceBar/LocationDetailBar";
 export { default as ContentHeader } from "./attendance/contentHeader/ContentHeader";
 export { default as ContentList } from "./attendance/contentList/ContentList";
