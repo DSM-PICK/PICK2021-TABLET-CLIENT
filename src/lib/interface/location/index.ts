@@ -1,7 +1,10 @@
 export interface LocationType {
   id: number;
-  major_id: number;
+  major: {
+    id: number;
+    name: string;
+  };
+  name: string;
   floor: number;
   priority: string;
-  name: string;
 }
