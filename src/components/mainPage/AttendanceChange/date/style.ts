@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { MainColor } from "../../../../../utils/color/color";
+import { MainColor } from "../../../../utils/color/color";
 
 interface Props {
   open: boolean;

@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import * as S from "./style";
-import { SubTitle } from "../../../index";
+import { SubTitle } from "../../index";
 import {
   ClassButtonList,
   FieldButtonType,
-} from "../../../../lib/interface/Attendance/FieldButtonType";
+} from "../../../lib/interface/Attendance/FieldButtonType";
 import FloorClassItem from "./FloorClassItem";
-import ListContainer from "./ListContainer";
-import attendance from "../../../../lib/api/attendance";
+import ListContainer from "./AttedanceContainer";
 
 const AttendanceChangeList = () => {
   const [selected, setSelected] = useState<number>(1);
@@ -15,19 +14,6 @@ const AttendanceChangeList = () => {
   const selectedHandlerColor = (item: FieldButtonType) => {
     setSelected(item.id);
   };
-
-  useEffect(() => {
-    const test = async () => {
-      try {
-        const res = await attendance.getAttendance();
-        return res.data;
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    test().then((res) => console.log(res));
-  }, []);
 
   return (
     <S.MainWrapper>

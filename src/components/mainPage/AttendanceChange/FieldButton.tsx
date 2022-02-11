@@ -1,9 +1,8 @@
-import React from "react";
-import { MainColor } from "../../../../utils/color/color";
-import { FieldButtonType } from "../../../../lib/interface/Attendance/FieldButtonType";
-import * as S from "./style";
+import { MainColor } from "../../../utils/color/color";
+import { FieldButtonType } from "../../../lib/interface/Attendance/FieldButtonType";
 import { useRecoilState } from "recoil";
-import { attendanceData } from "../../../../modules/atom/attendance";
+import { attendanceData } from "../../../modules/atom/attendance";
+import styled from "@emotion/styled";
 
 interface Props {
   item: FieldButtonType;
@@ -22,7 +21,7 @@ const FieldButton = (props: Props) => {
   };
 
   return (
-    <S.FieldButton
+    <FieldButtonWrap
       onClick={() => {
         props.selectedHandlerColor(props.item);
         onChange(props.item.name);
@@ -33,8 +32,14 @@ const FieldButton = (props: Props) => {
       }}
     >
       {props.item.name}
-    </S.FieldButton>
+    </FieldButtonWrap>
   );
 };
+
+const FieldButtonWrap = styled.span`
+  padding: 9px 15px;
+  border-radius: 3px;
+  font-size: 17px;
+`;
 
 export default FieldButton;

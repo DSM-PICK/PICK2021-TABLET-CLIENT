@@ -1,9 +1,13 @@
 export interface AttendanceType {
-  state: string;
-  term: string;
+  director_id: string;
+  id: number;
+  memo: string | null;
+  period: string | null;
   reason: string;
-  student: studentType | null;
-  director: directorType | null;
+  state: string;
+  student_id: string;
+  teacher_id: string;
+  term: string;
 }
 
 export interface AttendancePostType {
@@ -14,14 +18,14 @@ export interface AttendancePostType {
   reason: string;
 }
 
-interface studentType {
+export interface studentType {
   id: string;
   name: string;
   gcn: string;
   state: string;
 }
 
-interface directorType {
+export interface directorType {
   id: string;
   floor: number;
 }
