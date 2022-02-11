@@ -4,3 +4,8 @@ export const FloorId = atom<number | undefined>({
   key: "FloorId",
   default: undefined,
 });
+
+export const LoactionId = atom<number | any>({
+  key: "LoactionId",
+  default: localStorage.getItem("locationId"),
+});
