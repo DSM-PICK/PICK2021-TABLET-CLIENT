@@ -7,21 +7,35 @@ interface Props {
 
 export const ChangeWrapper = styled.div<Props>`
   display: flex;
-  transform: ${({ modalOpen }) => (modalOpen ? "translateX(0)" : "translateX(800px)")};
+  transform: ${({ modalOpen }) =>
+    modalOpen ? "translateY(0)" : "translateY(85vh)"};
   flex-direction: column;
   justify-content: space-between;
-  width: 60%;
-  height: 100vh;
+  width: 100%;
+  height: 85vh;
   background: #ffffff;
-  box-shadow: -7px 0px 14px rgba(164, 164, 164, 0.25);
+  box-shadow: 0px 0px 14px rgb(164 164 164 / 25%);
+  border-radius: 50px 50px 0 0;
   position: absolute;
+  bottom: 0;
   z-index: 3;
-  right: 0;
   padding: 4rem;
   box-sizing: border-box;
   transition: all 1s;
 
+  .title_wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .info_text {
+      font-size: 16px;
+      color: #707070;
+    }
+  }
+
   .date {
+    margin-top: 20px;
     font-size: 22px;
   }
 `;
@@ -66,18 +80,27 @@ export const TeacherItemBox = styled.div`
     height: 200px;
     overflow: scroll;
 
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+    ::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera*/
+    }
+
     span {
       font-size: 20px;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
     }
   }
 `;
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 4%;
 
   & button {
+    width: 48%;
     padding: 8px 0;
     margin-bottom: 10px;
     box-sizing: border-box;
