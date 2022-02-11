@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
+import styled from "@emotion/styled";
+import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { DateNonYearHook } from "../../../../../lib/hook/dateChangeHook";
-import { DatePeriodChangeHook } from "../../../../../lib/hook/datePeriodChangeHook";
-import { DateSplitHook } from "../../../../../lib/hook/dateSplitHook";
-import { attendanceData } from "../../../../../modules/atom/attendance";
+import { DateNonYearHook } from "../../../../lib/hook/dateChangeHook";
+import { DatePeriodChangeHook } from "../../../../lib/hook/datePeriodChangeHook";
+import { DateSplitHook } from "../../../../lib/hook/dateSplitHook";
+import { attendanceData } from "../../../../modules/atom/attendance";
 import {
   calendarEndModal,
   calendarModal,
   endDateValue,
   startDateValue,
-} from "../../../../../modules/atom/calendar";
-import { EnrollmentItem } from "../style";
+} from "../../../../modules/atom/calendar";
 import CalendarEndModal from "./CalendarEndModal";
 import CalendarModal from "./CalendarModal";
 import * as S from "./style";
@@ -96,5 +96,32 @@ const CalendarItem = () => {
     </>
   );
 };
+
+const EnrollmentItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .field-item {
+    display: flex;
+  }
+
+  .react-datepicker-wrapper {
+    width: auto;
+  }
+
+  .example-custom-input {
+    background: white;
+    border: none;
+  }
+
+  .text-input {
+    border-bottom: 1px solid black;
+    outline: none;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+  }
+`;
 
 export default CalendarItem;

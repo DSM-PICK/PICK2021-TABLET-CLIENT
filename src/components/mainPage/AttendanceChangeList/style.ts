@@ -1,11 +1,14 @@
 import styled from "@emotion/styled";
-import { AttendanceChangeWrapper } from "../AttendanceChange/style";
 
 interface Props {
   modal: boolean;
 }
 
-export const MainWrapper = styled(AttendanceChangeWrapper)``;
+export const MainWrapper = styled.section`
+  margin: 40px 0;
+  width: 100%;
+  height: 33%;
+`;
 
 export const SelectButtonWrapper = styled.div`
   margin: 20px 0;

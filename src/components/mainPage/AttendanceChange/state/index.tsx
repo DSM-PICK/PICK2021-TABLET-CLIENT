@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import styled from "@emotion/styled";
+import { useState } from "react";
 import {
   FieldButtonList,
   FieldButtonType,
-} from "../../../../../lib/interface/Attendance/FieldButtonType";
+} from "../../../../lib/interface/Attendance/FieldButtonType";
 import FieldButton from "../FieldButton";
-import { EnrollmentItem, SubTitle } from "../style";
 
 const StateItem = () => {
   const [selected, setSelected] = useState<number>(1);
@@ -28,5 +28,38 @@ const StateItem = () => {
     </EnrollmentItem>
   );
 };
+
+const SubTitle = styled.span`
+  font-size: 18px;
+  font-weight: 600;
+  padding: 9px 0;
+`;
+
+const EnrollmentItem = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .field-item {
+    display: flex;
+  }
+
+  .react-datepicker-wrapper {
+    width: auto;
+  }
+
+  .example-custom-input {
+    background: white;
+    border: none;
+  }
+
+  .text-input {
+    border-bottom: 1px solid black;
+    outline: none;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+  }
+`;
 
 export default StateItem;

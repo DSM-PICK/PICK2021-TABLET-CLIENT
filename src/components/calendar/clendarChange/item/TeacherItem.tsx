@@ -1,6 +1,5 @@
-import React from "react";
 import { useRecoilValue } from "recoil";
-import { dateValue } from "../../../../modules/atom/calendar";
+import { date, dateValue } from "../../../../modules/atom/calendar";
 import { teacherListSelector } from "../../../../modules/selector/teacher";
 import * as S from "../style";
 import schedule from "../../../../lib/api/schedule/scheduleApi";
@@ -16,18 +15,28 @@ const TeacherItem = () => {
   const queryClient = useQueryClient();
 
   const teacherList = useRecoilValue(teacherListSelector);
+  const baseDate = useRecoilValue(date);
   const dateContent = useRecoilValue(dateValue);
 
   // 층별 선생님 리스트
-  const { data: teacherFloor } = useQuery("teacherFloor", () =>
-    teacherApi.getTeacherApi(dateContent)
+  const { data: teacherFloor } = useQuery(
+    ["teacher_floor", baseDate],
+    () => teacherApi.getTeacherApi(baseDate.format("YYYY-MM-DD")),
+    {
+      enabled: !!dateContent,
+      cacheTime: Infinity,
+      staleTime: Infinity,
+    }
   );
 
+  console.log(teacherFloor?.data);
   const { mutate: patchTeacherHandle } = useMutation(
-    ({ floor, id }: any) => schedule.patchTeacher(dateContent, floor, id),
+    ({ floor, id }: any) =>
+      schedule.patchTeacher(baseDate.format("YYYY-MM-DD"), floor, id),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries("teacherFloor");
+        queryClient.invalidateQueries("teacher_floor");
+        queryClient.invalidateQueries("scehdule_list");
         ToastSuccess("자습감독 선생님이 교체되었습니다.");
       },
       onError: () => {
@@ -61,19 +70,27 @@ const TeacherItem = () => {
   };
 
   return (
-    <S.TeacherInfoWrapper>
-      <S.FloorItemBox>
-        {teacherFloor?.data?.teachers?.map((item: TeacherFloorType) => {
-          return (
-            <div className="teacher_wrap" key={item.floor}>
-              <span>{item.floor}층</span>
-              <span>{item.teacher_name}</span>
-            </div>
-          );
-        })}
-      </S.FloorItemBox>
-      <S.TeacherItemBox>{teacherListHandler(teacherList)}</S.TeacherItemBox>
-    </S.TeacherInfoWrapper>
+    <>
+      {teacherFloor?.data?.teachers?.length !== 0 ? (
+        <S.TeacherInfoWrapper>
+          <S.FloorItemBox>
+            {teacherFloor?.data?.teachers?.map((item: TeacherFloorType) => {
+              return (
+                <div className="teacher_wrap" key={item.floor}>
+                  <span>{item.floor}층</span>
+                  <span>{item.teacher_name} 선생님</span>
+                </div>
+              );
+            })}
+          </S.FloorItemBox>
+          <S.TeacherItemBox>{teacherListHandler(teacherList)}</S.TeacherItemBox>
+        </S.TeacherInfoWrapper>
+      ) : (
+        <p style={{ color: "#707070", textAlign: "center" }}>
+          오늘은 자습감독 선생님이 없습니다. 얼른 퇴근하세요!
+        </p>
+      )}
+    </>
   );
 };
 

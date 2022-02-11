@@ -1,24 +1,23 @@
-/* eslint-disable no-loop-func */
 import React from "react";
 import { useRecoilState } from "recoil";
 import {
-  calendarModal,
+  calendarEndModal,
   date,
-  startDateValue,
-} from "../../../../../modules/atom/calendar";
+  endDateValue,
+} from "../../../../modules/atom/calendar";
 import * as S from "./style";
 
-const CalendarModal = () => {
+const CalendarEndModal = () => {
   const [baseDate, setBaseDate] = useRecoilState(date);
-  const [open, setOpen] = useRecoilState(calendarModal);
-  const [startDate, setStartDate] = useRecoilState(startDateValue);
+  const [open, setOpen] = useRecoilState(calendarEndModal);
+  const [endDate, setEndDate] = useRecoilState(endDateValue);
   const test = baseDate.format("YYYY-MM-DD");
   const week = ["월", "화", "수", "목", "금"];
 
   const handleDayClick = (current: moment.Moment) => {
     setBaseDate(current);
     setOpen(false);
-    setStartDate(current);
+    setEndDate(current);
   };
 
   function generate() {
@@ -92,4 +91,4 @@ const CalendarModal = () => {
   );
 };
 
-export default CalendarModal;
+export default CalendarEndModal;

@@ -1,5 +1,5 @@
 import React from "react";
-import { MainBack } from "../../../../utils/assets";
+import { MainBack } from "../../../utils/assets";
 import * as S from "./style";
 
 const AttendanceSelect = () => {
