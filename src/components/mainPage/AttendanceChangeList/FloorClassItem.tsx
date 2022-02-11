@@ -1,8 +1,8 @@
 import React from "react";
-import { MainColor } from "../../../../utils/color/color";
+import { MainColor } from "../../../utils/color/color";
 import * as S from "./style";
-import { LocationType } from "../../../../lib/interface/location";
-import { FieldButtonType } from "../../../../lib/interface/Attendance/FieldButtonType";
+import { LocationType } from "../../../lib/interface/location";
+import { FieldButtonType } from "../../../lib/interface/Attendance/FieldButtonType";
 
 interface Props {
   item: LocationType | FieldButtonType;
