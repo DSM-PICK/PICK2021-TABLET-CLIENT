@@ -1,5 +1,4 @@
 import { useLocation } from "react-router-dom";
-import { useRecoilValue } from "recoil";
 import {
   LocationBar,
   ContentHeader,
@@ -8,21 +7,25 @@ import {
   Header,
   LocationDetailBar,
 } from "..";
-import { majorDetailSelector } from "../../modules/selector/major";
 import * as S from "./style";
 import QueryString from "query-string";
-import { useEffect } from "react";
+import { useQuery } from "react-query";
+import major from "../../lib/api/majorClub";
 
 const Attendance = () => {
   const location = useLocation();
   const queryData = QueryString.parse(location.search);
   const id: any = queryData.id;
 
-  const attendanceInfo = useRecoilValue(majorDetailSelector(id));
-
-  useEffect(() => {
-    console.log(attendanceInfo);
-  }, [attendanceInfo]);
+  const { data: attendanceMajorValue } = useQuery(
+    ["attendance_major_value", id],
+    () => major.getMajorDetail(id),
+    {
+      enabled: !!id,
+      cacheTime: Infinity,
+      staleTime: Infinity,
+    }
+  );
 
   return (
     <>
@@ -32,8 +35,8 @@ const Attendance = () => {
         <LocationBar />
         <LocationDetailBar />
         <S.ContentWrapper>
-          <ContentHeader info={attendanceInfo} />
-          <ContentList info={attendanceInfo} />
+          <ContentHeader info={attendanceMajorValue?.data} />
+          <ContentList info={attendanceMajorValue?.data} />
         </S.ContentWrapper>
       </S.MainWrapper>
     </>
