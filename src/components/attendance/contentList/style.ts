@@ -15,7 +15,7 @@ export const StudentList = styled.section`
     display: flex;
     flex-direction: row;
     border-bottom: 2px solid ${MainColor};
-    padding-bottom: 5px;
+    padding-bottom: 15px;
 
     li {
       font-size: 18px;
@@ -47,7 +47,7 @@ export const StudentItem = styled.ul<Props>`
   align-items: center;
   font-size: 20px;
   text-align: center;
-  margin: 10px 0;
+  margin: 15px 0;
   width: 100%;
   height: 30px;
 

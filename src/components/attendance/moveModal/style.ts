@@ -93,4 +93,6 @@ export const PlaceContent = styled.div`
   border: 1px solid #e4e4e4;
   box-sizing: border-box;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
 `;
