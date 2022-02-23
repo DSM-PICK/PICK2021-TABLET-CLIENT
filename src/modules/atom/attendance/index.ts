@@ -3,7 +3,12 @@ import { AttendancePostType } from "../../../lib/interface/Attendance";
 
 export const moveModal = atom({
   key: "modal",
-  default: false,
+  default: {
+    open: false,
+    gcn: "",
+    student_id: null,
+    student_name: "",
+  },
 });
 
 export const stateValue = atom({

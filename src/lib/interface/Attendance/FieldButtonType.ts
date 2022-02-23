@@ -1,10 +1,11 @@
-import { LocationType } from "../location";
-
 export interface FieldButtonType {
   id: number;
   name: string;
   floor?: number;
-  major_id?: number;
+  major?: {
+    id: number;
+    name: string;
+  };
 }
 
 export const FieldButtonList: FieldButtonType[] = [

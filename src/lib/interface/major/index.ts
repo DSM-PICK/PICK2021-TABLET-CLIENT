@@ -15,6 +15,7 @@ export interface MajorDetailType {
 }
 
 export interface MemberType {
+  id: any;
   student_id: number;
   student_name: string;
   gcn: string;
