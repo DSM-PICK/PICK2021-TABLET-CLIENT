@@ -1,12 +1,15 @@
 import { useState } from "react";
+import { useQuery } from "react-query";
 import { useRecoilState } from "recoil";
 import { moveModal } from "../../../modules/atom/attendance/index";
 import { Close } from "../../../utils/assets";
 import * as S from "./style";
+import locationApi from "../../../lib/api/location/locationApi";
 
 const MoveModal = () => {
   const [selected, setSelected] = useState<number>(0);
-  const [modal, setModal] = useRecoilState<boolean>(moveModal);
+  const [modal, setModal] = useRecoilState(moveModal);
+  const [selectedPlace, setSelectedPlace] = useState<string>("");
 
   const place = [
     {
@@ -35,14 +38,53 @@ const MoveModal = () => {
     },
   ];
 
+  const { data: placeValue } = useQuery(
+    ["place_value", selected],
+    () => locationApi.getLocationFloor(selected),
+    {
+      enabled: !!selected,
+      cacheTime: Infinity,
+      staleTime: Infinity,
+    }
+  );
+
+  const selectedMent = () => {
+    if (selectedPlace) {
+      return (
+        <>
+          <span>
+            {modal.gcn} {modal.student_name} 학생 {selectedPlace} 이동을
+            맞으신가요?
+          </span>
+          <button>출석하기</button>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <span>
+            {modal.gcn} {modal.student_name} 학생 이동 교실을 선택해주세요.
+          </span>
+          <button>출석하기</button>
+        </>
+      );
+    }
+  };
+
   return (
-    <S.ModalWrapper modal={modal}>
+    <S.ModalWrapper modal={modal.open}>
       <S.ModalBox>
         <h1>이동 교실 선택</h1>
-        <img src={Close} alt="닫기 아이콘" onClick={() => setModal(false)} />
+        <img
+          src={Close}
+          alt="닫기 아이콘"
+          onClick={() => setModal({ ...modal, open: false })}
+        />
         <S.PlaceWrapper>
           <S.Placebar>
-            <span>2201 강은빈</span>
+            <span>
+              {modal.gcn} {modal.student_name}
+            </span>
             <ul>
               {place.map((place, index) => (
                 <li
@@ -55,12 +97,15 @@ const MoveModal = () => {
               ))}
             </ul>
           </S.Placebar>
-          <S.PlaceContent></S.PlaceContent>
+          <S.PlaceContent>
+            {placeValue?.data?.map((place: any) => (
+              <li key={place.id} onClick={() => setSelectedPlace(place.name)}>
+                {place.name}
+              </li>
+            ))}
+          </S.PlaceContent>
         </S.PlaceWrapper>
-        <S.AttendanceButton>
-          <span>2201 강은빈 학생 이동교실을 선택해주세요!</span>
-          <button>출석하기</button>
-        </S.AttendanceButton>
+        <S.AttendanceButton>{selectedMent()}</S.AttendanceButton>
       </S.ModalBox>
     </S.ModalWrapper>
   );
