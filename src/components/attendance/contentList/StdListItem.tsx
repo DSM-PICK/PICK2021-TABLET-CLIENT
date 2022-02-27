@@ -7,29 +7,37 @@ import * as S from "./style";
 
 interface Props {
   item: MemberType;
+  checkHandle: (e: any) => void;
 }
 
-const StdListItem = ({ item }: Props) => {
+const StdListItem = ({ item, checkHandle }: Props) => {
   const [count, setCount] = useRecoilState<number>(selectCount);
   const [check, setCheck] = useState<boolean>(false);
 
   const std = ["8교시", "9교시", "10교시"];
+  // const [selectStudentList, setSelectStudentList] = useState([]);
+
+  const checkBoxClickHandle = () => {
+    setCheck(!check);
+    check ? setCount(count - 1) : setCount(count + 1);
+  };
 
   return (
     <>
       <S.StudentItem check={check}>
-        <div className="checkbox">
-          <div
-            onClick={() => {
-              setCheck(!check);
-              check ? setCount(count - 1) : setCount(count + 1);
-            }}
+        <label key={item.id} className="checkbox">
+          <input
+            type="checkbox"
+            value={item.student_name}
+            onChange={(e) => checkHandle(e)}
           />
-        </div>
+
+          {/* <div onClick={(e) => checkHandle(e)} /> */}
+        </label>
         <span>{item.gcn}</span>
         <span>{item.student_name}</span>
         {std.map((_, index) => (
-          <StateContainer key={index} />
+          <StateContainer key={index} student={item} />
         ))}
       </S.StudentItem>
     </>

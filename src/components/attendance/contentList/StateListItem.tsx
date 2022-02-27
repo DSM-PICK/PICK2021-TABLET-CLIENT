@@ -3,14 +3,16 @@ interface Props {
   setState: any;
   stateSelect: boolean;
   item: string;
+  modalOff: any;
 }
 
 const StateListItem = (props: Props) => {
   return (
     <li
-      onClick={() => {
+      onClick={(e) => {
         props.setState(props.item);
         props.setStateSelect(!props.stateSelect);
+        props.modalOff(e);
       }}
     >
       {props.item}
