@@ -1,29 +1,41 @@
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useHistory, useLocation } from "react-router-dom";
 import { LocationType } from "../../../lib/interface/location";
-import { locationFloorSelector } from "../../../modules/selector/location";
 import SelectItem from "./SelectItem";
 import * as S from "./style";
 import QueryString from "query-string";
+import { useQuery } from "react-query";
+import locationApi from "../../../lib/api/location/locationApi";
+import { useRecoilState } from "recoil";
+import { LoactionId } from "../../../modules/atom/location";
 
 const LocationDetailBar = () => {
-  const [selected, setSelected] = useState<number>(1);
-
+  const { push } = useHistory();
   const location = useLocation();
   const queryData = QueryString.parse(location.search);
   const floor: any = queryData.floor;
 
-  const place = useRecoilValue(locationFloorSelector(floor));
+  const [selected, setSelected] = useRecoilState(LoactionId);
 
   const selectedHandlerColor = (item: LocationType) => {
+    localStorage.setItem("locationId", String(item?.id));
+    push(`/attendance?floor=${floor}&id=${item.id}`);
     setSelected(item.id);
-    
+    console.log(item.id);
   };
+
+  const { data: placeValue } = useQuery(
+    ["place_value", floor],
+    () => locationApi.getLocationFloor(floor),
+    {
+      enabled: !!floor,
+      cacheTime: Infinity,
+      staleTime: Infinity,
+    }
+  );
 
   return (
     <S.SelectBarWrapper>
-      {place?.map((item: LocationType) => (
+      {placeValue?.data?.map((item: LocationType) => (
         <SelectItem
           key={item.id}
           item={item}

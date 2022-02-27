@@ -1,20 +1,28 @@
+import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { StudentItem } from "../..";
 import { MajorDetailType } from "../../../lib/interface/major";
 import { selectCount } from "../../../modules/atom/attendance";
-import MoveModal from "../moveModal/MoveModal";
+import { checkList_atom } from "../../../modules/atom/attendance/studentAttendance";
 import * as S from "./style";
 
 interface Props {
   info: MajorDetailType;
+  checkHandle: (e: any) => void;
 }
 
-const ContentList = ({ info }: Props) => {
+const ContentList = ({ info, checkHandle }: Props) => {
+  const checkedItems = useRecoilValue(checkList_atom);
   const count = useRecoilValue(selectCount);
+
+  useEffect(() => {
+    info?.members?.filter((std) =>
+      std.student_name === checkedItems ? console.log(true) : console.log(false)
+    );
+  }, [checkedItems, info?.members]);
 
   return (
     <>
-      <MoveModal />
       <S.StudentList>
         <ul className="sub-header">
           <li>선택</li>
@@ -30,7 +38,11 @@ const ContentList = ({ info }: Props) => {
           ) : (
             <>
               {info?.members.map((item) => (
-                <StudentItem key={item.student_id} item={item} />
+                <StudentItem
+                  key={item.student_id}
+                  item={item}
+                  checkHandle={checkHandle}
+                />
               ))}
               <span className="count">{count}명 선택됨</span>
             </>
