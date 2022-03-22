@@ -1,4 +1,4 @@
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { date, dateValue } from "../../../../modules/atom/calendar";
 import { teacherListSelector } from "../../../../modules/selector/teacher";
 import * as S from "../style";
@@ -10,9 +10,11 @@ import {
   TeacherType,
 } from "../../../../lib/interface/teacher";
 import { useMutation, useQuery, useQueryClient } from "react-query";
+import { modal } from "../../../../modules/atom/schedule";
 
 const TeacherItem = () => {
   const queryClient = useQueryClient();
+  const [modalOpen, setModalOpen] = useRecoilState(modal);
 
   const teacherList = useRecoilValue(teacherListSelector);
   const baseDate = useRecoilValue(date);
@@ -23,7 +25,7 @@ const TeacherItem = () => {
     ["teacher_floor", baseDate],
     () => teacherApi.getTeacherApi(baseDate.format("YYYY-MM-DD")),
     {
-      enabled: !!dateContent,
+      enabled: !!dateContent && modalOpen,
       cacheTime: Infinity,
       staleTime: Infinity,
     }
